@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - Paynder</title>
+    <link rel="stylesheet" href="Signup.css"> <!-- Link to your CSS file -->
+</head>
+<body>
+    <div class="container">
+        <h1>Sign Up</h1>
+        <form id="signUpForm">
+            <input type="text" id="newUsername" placeholder="Username" required><br><br>
+            <input type="email" id="email" placeholder="Email" required><br><br>
+            <input type="tel" id="phoneNumber" placeholder="Phone Number" required><br><br>
+            <input type="password" id="newPassword" placeholder="Password" required><br><br>
+            <button type="button" class="button" onclick="signUp()">Sign Up</button>
+        </form>
+        <p>Already have an account? <a href="login.html" class="link">Sign In</a></p>
+    </div>
+    
+    <script>
+        async function signUp() {
+            const username = document.getElementById('newUsername').value;
+            const password = document.getElementById('newPassword').value;
+            const email = document.getElementById('email').value;
+            const phoneNumber = document.getElementById('phoneNumber').value;
+
+            try {
+                // Connect to MetaMask and get the user's wallet address
+                if (window.ethereum) {
+                    await window.ethereum.request({ method: 'eth_requestAccounts' });
+                    const accounts = await window.ethereum.request({ method: 'eth_accounts' });
+                    const walletAddress = accounts[0];
+
+                    // Send the sign-up data including wallet address to the server
+                    const response = await fetch('http://127.0.0.1:5000/signup', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({ username, password, email, phone: phoneNumber, walletAddress })
+                    });
+
+                    const result = await response.json();
+
+                    if (response.ok) {
+                        alert(result.message); // Show success message
+                        window.location.href = 'login.html'; // Redirect to login page
+                    } else {
+                        alert(result.error); // Show error message
+                    }
+                } else {
+                    alert('MetaMask is not installed. Please install MetaMask to proceed.');
+                }
+            } catch (error) {
+                console.error('Error signing up:', error);
+                alert('An error occurred while signing up.');
+            }
+        }
+    </script>
+</body>
+</html>

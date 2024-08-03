@@ -1,0 +1,31 @@
+.App {
+    text-align: center;
+    background-color: white;
+    color: black;
+  }
+  
+  header {
+    background-color: blue;
+    padding: 20px;
+  }
+  
+  button {
+    margin: 10px;
+    padding: 10px;
+    background-color: lightblue;
+    border: none;
+    color: white;
+    cursor: pointer;
+  }
+  
+  .video-samples {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+  }
+  
+  video {
+    border: 2px solid darkblue;
+  }
+  

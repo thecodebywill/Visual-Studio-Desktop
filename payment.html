@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Processing - Paynder</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/web3@1.8.2/dist/web3.min.js"></script> <!-- Specific version -->
+    <style>
+        .container {
+            margin-top: 50px;
+            text-align: center;
+        }
+        .btn {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Payment Processing</h2>
+        <p id="paymentDetails"></p>
+        <button id="connectWalletButton" class="btn btn-primary">Connect Wallet</button>
+        <button id="processPaymentButton" class="btn btn-success" style="display:none;">Process Payment</button>
+        <div id="log" style="margin-top: 20px; text-align: left;"></div>
+    </div>
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const description = urlParams.get('desc');
+        const stablecoin = urlParams.get('coin');
+        const network = urlParams.get('network');
+        const amount = urlParams.get('amount');
+        const recipient = urlParams.get('recipient');
+
+        document.getElementById("paymentDetails").innerText = `Description: ${description}, Stablecoin: ${stablecoin}, Network: ${network}, Amount: ${amount}, Recipient: ${recipient}`;
+
+        let web3;
+        let userAccount;
+
+        // Stablecoin contract addresses (Replace with actual addresses)
+        const stablecoinAddresses = {
+            "USDT": "0x48065fbbe25f71c9282ddf5e1cd6d6a887483d5e",
+            "USDC": "0xcebA9300f2b948710d2653dD7B07f33A8B32118C",
+            "cUSD": "0x765de816845861e75a25fca122bb6898b8b1282a"
+        };
+
+        // ERC20 ABI (simplified)
+        const contractABI = [
+    {
+        "constant": true,
+        "inputs": [],
+        "name": "decimals",
+        "outputs": [{"name": "", "type": "uint8"}],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "constant": false,
+        "inputs": [
+            {"name": "_to", "type": "address"},
+            {"name": "_value", "type": "uint256"}
+        ],
+        "name": "transfer",
+        "outputs": [{"name": "", "type": "bool"}],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "constant": true,
+        "inputs": [
+            {"name": "_owner", "type": "address"}
+        ],
+        "name": "balanceOf",
+        "outputs": [{"name": "", "type": "uint256"}],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+    }
+];
+        const log = (message) => {
+            const logDiv = document.getElementById("log");
+            const newMessage = document.createElement("p");
+            newMessage.textContent = message;
+            logDiv.appendChild(newMessage);
+        };
+
+        document.getElementById("connectWalletButton").addEventListener("click", async () => {
+            log("Connecting wallet...");
+            if (window.ethereum) {
+                try {
+                    web3 = new Web3(window.ethereum);
+                    await window.ethereum.request({ method: 'eth_requestAccounts' });
+                    const accounts = await web3.eth.getAccounts();
+                    userAccount = accounts[0];
+                    document.getElementById("connectWalletButton").style.display = "none";
+                    document.getElementById("processPaymentButton").style.display = "inline-block";
+                    log("Wallet connected: " + userAccount);
+                } catch (error) {
+                    log("User denied wallet connection: " + error.message);
+                    alert("Wallet connection failed. Please try again.");
+                }
+            } else {
+                log("MetaMask not found.");
+                alert("Please install MetaMask to connect your wallet.");
+            }
+        });
+
+        document.getElementById("processPaymentButton").addEventListener("click", async () => {
+            if (!web3 || !userAccount) {
+                alert("Please connect your wallet first.");
+                log("Wallet not connected.");
+                return;
+            }
+
+            log("Processing payment...");
+
+            try {
+                const stablecoinAddress = stablecoinAddresses[stablecoin];
+                const stablecoinContract = new web3.eth.Contract(contractABI, stablecoinAddress);
+
+                // Check stablecoin balance
+                const balance = await stablecoinContract.methods.balanceOf(userAccount).call();
+                const decimals = await stablecoinContract.methods.decimals().call();
+                const amountInWei = web3.utils.toWei(amount, 'ether'); // Convert amount to wei based on decimals
+
+                log(`Balance: ${balance}, Required: ${amountInWei}`);
+
+                if (web3.utils.toBN(balance).lt(web3.utils.toBN(amountInWei))) {
+                    alert(`You have insufficient ${stablecoin}. Please recharge and try again.`);
+                    log("Insufficient stablecoin balance.");
+                    return;
+                }
+
+                // Check ETH balance for gas fees
+                const gasPrice = await web3.eth.getGasPrice();
+                const gasLimit = 200000; // Adjust gas limit if necessary
+                const ethBalance = await web3.eth.getBalance(userAccount);
+
+                const requiredEth = web3.utils.toBN(gasPrice).mul(web3.utils.toBN(gasLimit));
+                log(`ETH Balance: ${ethBalance}, Required: ${requiredEth}`);
+
+                if (web3.utils.toBN(ethBalance).lt(requiredEth)) {
+                    alert("You have insufficient ETH for gas fees. Please recharge and try again.");
+                    log("Insufficient ETH balance for gas fees.");
+                    return;
+                }
+
+                // Send the transaction
+                const tx = {
+                    from: userAccount,
+                    to: stablecoinAddress,
+                    data: stablecoinContract.methods.transfer(recipient, amountInWei).encodeABI(),
+                    gas: gasLimit,
+                    gasPrice: gasPrice
+                };
+
+                log("Sending transaction...");
+
+                await web3.eth.sendTransaction(tx)
+                    .on('transactionHash', (hash) => {
+                        alert(`Payment successful! Transaction hash: ${hash}`);
+                        log(`Transaction hash: ${hash}`);
+                    })
+                    .on('error', (error) => {
+                        console.error("Payment failed:", error);
+                        log("Payment failed: " + error.message);
+                        if (error.message.includes('wrong network')) {
+                            alert("Network error. Please switch to the correct network and try again.");
+                        } else {
+                            alert("Payment failed. Please try again.");
+                        }
+                    });
+            } catch (error) {
+                console.error("Payment failed:", error);
+                log("Payment failed: " + error.message);
+                alert("Payment failed. Please try again.");
+            }
+        });
+    </script>
+</body>
+</html>
