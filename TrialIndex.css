@@ -417,42 +417,39 @@ header {
 @media (max-width: 992px) {
     .navbar-collapse {
         position: absolute;
-        top: 100%; /* This positions it below the navbar */
+        top: 100%; /* Positions it below the navbar */
         left: 0;
         width: 100%;
         background-color: #f8f9fa; /* Background color matching the navbar */
         z-index: 1000;
-    
+    }
 
     .navbar-nav {
         margin-top: 10px; /* Adjust the spacing from the top of the navbar */
     }
 
-/*Dispute connect wallet and menu on mobile
-/* Ensure the dropdown menu appears below the "Connect Wallet" button */
-.navbar .dropdown-menu {
-    display: none;
-    z-index: 1000; /* Ensure it's on top */
-}
+    /* Ensure the dropdown menu appears below the "Connect Wallet" button */
+    .navbar .dropdown-menu {
+        display: none;
+        z-index: 1000; /* Ensure it's on top */
+    }
 
-#connectWalletButton {
-    position: relative;
-    z-index: 999; /* Just below the dropdown menu */
-}
+    #connectWalletButton {
+        position: relative;
+        z-index: 999; /* Just below the dropdown menu */
+    }
 
-/*drop down on send payment
-/* Ensure dropdown menu appears correctly */
-.navbar-nav .dropdown-menu {
-    position: absolute;
-    z-index: 1050; /* Ensure it's on top of other elements */
-    top: 100%; /* Make sure it appears below the button */
-    left: 0;
-    right: 0;
-    margin-top: 0.5rem; /* Add some space between the button and the dropdown */
-}
+    /* Ensure dropdown menu appears correctly on send payment */
+    .navbar-nav .dropdown-menu {
+        position: absolute;
+        z-index: 1050; /* Ensure it's on top of other elements */
+        top: 100%; /* Make sure it appears below the button */
+        left: 0;
+        right: 0;
+        margin-top: 0.5rem; /* Add some space between the button and the dropdown */
+    }
 
-/* Ensure dropdown menu is full width on mobile */
-@media (max-width: 767px) {
+    /* Ensure dropdown menu is full width on mobile */
     .navbar-nav .dropdown-menu {
         width: 100%; /* Full width on mobile */
     }
