@@ -30,12 +30,21 @@
         .btn-group {
             margin-top: 20px;
         }
+        .dropdown-menu {
+            display: none;
+        }
+        .dropdown-menu.show {
+            display: block;
+        }
     </style>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="paynder.html">Paynder</a>
-        <div class="collapse navbar-collapse">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
                     <a class="nav-link" href="createinvoice.html">Create Invoice</a>
@@ -53,8 +62,11 @@
                     <a class="nav-link" href="Dashboard.html">Dashboard</a>
                 </li> 
             </ul>
+            <button type="button" class="btn btn-primary" id="connectWalletButton">Connect Wallet</button>
+            <div class="dropdown-menu">
+                <button class="dropdown-item" id="disconnectWalletButton">Disconnect Wallet</button>
+            </div>
         </div>
-        <button type="button" class="btn btn-orange" id="connectWalletButton">Connect Wallet</button>
     </nav>
 
     <div class="container mt-5">
@@ -103,7 +115,6 @@
                 <button class="btn btn-secondary" id="shareEmailButton">Share via Email</button>
                 <button class="btn btn-secondary" id="shareWhatsAppButton">Share via WhatsApp</button>
             </div>
-            <div id="paymentLinkOutput" class="mt-4" style="display:none;"></div>
         </div>
     </div>
 
@@ -114,9 +125,24 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/jspdf@latest/dist/jspdf.umd.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/ethers@5.7.0/dist/ethers.umd.min.js"></script>
     <script src="invoice-generator.js"></script>
+    <script>
+        document.getElementById('connectWalletButton').addEventListener('click', function () {
+            var dropdownMenu = document.querySelector('.dropdown-menu');
+            dropdownMenu.classList.toggle('show');
+        });
+
+        window.onclick = function(event) {
+            if (!event.target.matches('#connectWalletButton')) {
+                var dropdowns = document.getElementsByClassName("dropdown-menu");
+                for (var i = 0; i < dropdowns.length; i++) {
+                    var openDropdown = dropdowns[i];
+                    if (openDropdown.classList.contains('show')) {
+                        openDropdown.classList.remove('show');
+                    }
+                }
+            }
+        };
+    </script>
 </body>
 </html>
