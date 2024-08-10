@@ -362,3 +362,54 @@ footer {
 h2 {
     color: #ff5722; /* Ensure this rule is consistent */
 }
+/*Mobile friendly
+body {
+    scroll-behavior: smooth;
+}
+
+/* Sticky header */
+header {
+    position: sticky;
+    top: 0;
+    z-index: 1020;
+}
+
+/* Centered hero content */
+.hero-content {
+    z-index: 2;
+}
+
+/* Animation for hovering over product and feature items */
+.product-item:hover,
+.feature-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* Section background color and styles */
+.products,
+.about,
+.contact {
+    background: linear-gradient(to right, #1a1a1a, #333);
+    color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    transition: background 0.5s ease;
+}
+
+/* Contact form styles */
+.contact form {
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.contact input,
+.contact textarea {
+    width: 100%;
+}
+
+.contact button {
+    width: 100%;
+}
