@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,12 +9,10 @@
     <style>
         /* Make the header sticky */
         .navbar {
-            position: -webkit-sticky;
-            /* For Safari */
+            position: -webkit-sticky; /* For Safari */
             position: sticky;
             top: 0;
-            z-index: 1020;
-            /* Ensure the header is above other content */
+            z-index: 1020; /* Ensure the header is above other content */
         }
 
         #connectWalletButton {
@@ -50,33 +47,25 @@
             display: block;
         }
 
-        /* Custom styles for mobile */
+        /* Mobile responsiveness */
         @media (max-width: 767px) {
-            .navbar-collapse {
-                display: flex;
+            .navbar .navbar-collapse {
+                text-align: center;
+            }
+
+            .toggle-buttons {
                 flex-direction: column;
-                align-items: flex-start;
-            }
-
-            .navbar-collapse .navbar-nav {
-                margin-top: 10px;
-            }
-
-            #connectWalletButton {
-                margin-bottom: 10px;
+                gap: 5px;
             }
         }
     </style>
 </head>
-
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="index.html">Paynder</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
-            aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <button type="button" class="btn btn-primary ml-auto" id="connectWalletButton">Connect Wallet</button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
@@ -93,8 +82,9 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="Dashboard.html">Dashboard</a>
-                </li>
+                </li> 
             </ul>
+            <button type="button" class="btn btn-primary" id="connectWalletButton">Connect Wallet</button>
         </div>
     </nav>
 
@@ -173,5 +163,4 @@
     <script src="https://cdn.jsdelivr.net/npm/web3@1.8.2/dist/web3.min.js"></script>
     <script src="onramp-offramp.js"></script>
 </body>
-
 </html>
