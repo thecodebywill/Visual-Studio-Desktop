@@ -55,50 +55,49 @@ nav ul li a {
 /* Mobile Styles for Header */
 @media (max-width: 768px) {
     nav {
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-        position: relative;
-    }
-    
-    nav .menu-toggle {
-        display: block;
-        cursor: pointer;
-        color: white;
-        font-size: 24px;
+        flex-direction: column;
+        align-items: flex-start;
     }
     
     nav ul {
-        position: absolute;
-        top: 100%;
-        left: 0;
-        right: 0;
-        background-color: #333;
         flex-direction: column;
-        display: none;
-    }
-    
-    nav ul.show {
-        display: flex;
+        width: 100%;
     }
     
     nav ul li {
-        width: 100%;
-        text-align: left;
-        padding: 10px 20px;
-        border-bottom: 1px solid #444;
+        margin: 10px 0;
     }
 }
 
-/* Toggle Button Styles */
-nav .menu-toggle {
-    display: none; /* Hidden by default */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
 }
 
-@media (max-width: 768px) {
-    nav .menu-toggle {
-        display: block;
-    }
+nav .logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #ff5722;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+nav ul li {
+    margin: 0;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
 }
 
 .hero {
