@@ -420,7 +420,7 @@ header {
         top: 100%; /* This positions it below the navbar */
         left: 0;
         width: 100%;
-        background-color:#f8f9fa; /* Background color matching the navbar */
+        background-color: #f8f9fa; /* Background color matching the navbar */
         z-index: 1000;
     
 
