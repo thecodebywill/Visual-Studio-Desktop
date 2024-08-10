@@ -239,3 +239,17 @@ document.addEventListener("DOMContentLoaded", function() {
         payInvoice();
     });
 });
+//Connect wallet and menu on mobile
+
+    document.addEventListener('DOMContentLoaded', function() {
+        const connectWalletButton = document.getElementById('connectWalletButton');
+        const dropdownMenu = document.querySelector('.dropdown-menu');
+
+        connectWalletButton.addEventListener('click', function() {
+            const buttonRect = connectWalletButton.getBoundingClientRect();
+            dropdownMenu.style.top = `${buttonRect.bottom + window.scrollY}px`;
+            dropdownMenu.style.left = `${buttonRect.left + window.scrollX}px`;
+            dropdownMenu.style.position = 'absolute';
+            dropdownMenu.style.display = 'block';
+        });
+    });
