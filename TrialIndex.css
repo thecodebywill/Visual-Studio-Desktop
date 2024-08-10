@@ -141,8 +141,6 @@ nav ul li a {
 }
 
 .products, .about, .contact {
-/* Products, About, Contact Sections */
-.products, .about, .contact {
     padding: 60px 20px;
     max-width: 100%;
     margin: 0 auto;
@@ -156,7 +154,7 @@ nav ul li a {
     transition: background 0.5s ease;
 }
 
-.products h2, .about h2, .contact h2 {
+.products h2, .about h2, .contact h2, {
     text-align: center;
     margin-bottom: 40px;
     color: orangered;
@@ -166,7 +164,6 @@ nav ul li a {
     display: flex;
     gap: 20px;
     justify-content: center;
-    flex-wrap: wrap; /* Allows wrapping for mobile */
 }
 
 .product-item, .feature-item {
@@ -189,31 +186,6 @@ nav ul li a {
 .product-item img, .feature-item img {
     max-width: 100px;
     margin-bottom: 20px;
-}
-
-/* Mobile Styles for Products and Features */
-@media (max-width: 768px) {
-    .product-list {
-        flex-direction: column;
-        align-items: center;
-    }
-    
-    .product-item, .feature-item {
-        max-width: 100%;
-        margin-bottom: 20px;
-    }
-}
-
-/* Extra Small Devices */
-@media (max-width: 576px) {
-    .products h2, .about h2, .contact h2 {
-        font-size: 24px;
-        margin-bottom: 30px;
-    }
-    
-    .product-item img, .feature-item img {
-        max-width: 80px;
-    }
 }
 
 .about p {
