@@ -15,7 +15,7 @@ header {
     background-color: #1a1a1a;
     padding: 20px 0;
     color: white;
-    text-align: left;
+    text-align: center;
     position: sticky;
     top: 0;
     z-index: 1020;
@@ -24,7 +24,7 @@ header {
 nav {
     display: flex;
     justify-content: space-between;
-    align-items: left;
+    align-items: center;
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
@@ -50,55 +50,6 @@ nav ul li a {
     color: white;
     text-decoration: none;
     font-weight: bold;
-}
-
-/* Mobile Styles for Header */
-@media (max-width: 768px) {
-    nav {
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-        position: relative;
-    }
-    
-    nav .menu-toggle {
-        display: block;
-        cursor: pointer;
-        color: white;
-        font-size: 24px;
-    }
-    
-    nav ul {
-        position: absolute;
-        top: 100%;
-        left: 0;
-        right: 0;
-        background-color: #333;
-        flex-direction: column;
-        display: none;
-    }
-    
-    nav ul.show {
-        display: flex;
-    }
-    
-    nav ul li {
-        width: 100%;
-        text-align: left;
-        padding: 10px 20px;
-        border-bottom: 1px solid #444;
-    }
-}
-
-/* Toggle Button Styles */
-nav .menu-toggle {
-    display: none; /* Hidden by default */
-}
-
-@media (max-width: 768px) {
-    nav .menu-toggle {
-        display: block;
-    }
 }
 
 .hero {
