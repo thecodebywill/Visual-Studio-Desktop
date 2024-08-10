@@ -431,12 +431,11 @@ header {
 /*Dispute connect wallet and menu on mobile
 /* Ensure the dropdown menu appears below the "Connect Wallet" button */
 .navbar .dropdown-menu {
-    position: relative;
-    z-index: 999; /* Place dropdown above other elements */
-    margin-top: 10px; /* Add some space below the "Connect Wallet" button */
+    display: none;
+    z-index: 1000; /* Ensure it's on top */
 }
 
 #connectWalletButton {
     position: relative;
-    z-index: 998; /* Ensure it's behind the dropdown menu */
+    z-index: 999; /* Just below the dropdown menu */
 }

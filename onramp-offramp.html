@@ -157,6 +157,20 @@
         <p>&copy; 2024 Paynder. All rights reserved.</p>
     </footer>
 
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const connectWalletButton = document.getElementById('connectWalletButton');
+            const dropdownMenu = document.querySelector('.dropdown-menu');
+    
+            connectWalletButton.addEventListener('click', function() {
+                const buttonRect = connectWalletButton.getBoundingClientRect();
+                dropdownMenu.style.top = `${buttonRect.bottom + window.scrollY}px`;
+                dropdownMenu.style.left = `${buttonRect.left + window.scrollX}px`;
+                dropdownMenu.style.position = 'absolute';
+                dropdownMenu.style.display = 'block';
+            });
+        });
+    </script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
