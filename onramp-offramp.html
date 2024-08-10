@@ -14,6 +14,7 @@
             top: 0;
             z-index: 1020; /* Ensure the header is above other content */
         }
+
         #connectWalletButton {
             background-color: orangered;
             color: white;
@@ -22,30 +23,50 @@
             border-radius: 5px;
             cursor: pointer;
         }
+
         .toggle-buttons {
             display: flex;
             gap: 10px;
         }
+
         .toggle-buttons .btn {
             flex: 1;
         }
+
         .toggle-buttons .active {
             background-color: orangered;
             color: white;
         }
+
         .form-container {
             display: none;
             margin-top: 20px;
         }
+
         .form-container.active {
             display: block;
+        }
+
+        /* Mobile responsiveness */
+        @media (max-width: 767px) {
+            .navbar .navbar-collapse {
+                text-align: center;
+            }
+
+            .toggle-buttons {
+                flex-direction: column;
+                gap: 5px;
+            }
         }
     </style>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="index.html">Paynder</a>
-        <div class="collapse navbar-collapse">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
                     <a class="nav-link" href="createinvoice.html">Create Invoice</a>
@@ -63,8 +84,8 @@
                     <a class="nav-link" href="Dashboard.html">Dashboard</a>
                 </li> 
             </ul>
+            <button type="button" class="btn btn-primary" id="connectWalletButton">Connect Wallet</button>
         </div>
-        <button type="button" class="btn btn-primary" id="connectWalletButton">Connect Wallet</button>
     </nav>
 
     <div class="container mt-5">
