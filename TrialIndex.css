@@ -414,7 +414,14 @@ header {
     width: 100%;
 }
 /*Mobile addition 
-@media (max-width: 992px) {
+.navbar {
+        position: -webkit-sticky;
+        position: sticky;
+        top: 0;
+        z-index: 1020;
+    }
+
+    @media (max-width: 992px) {
         .navbar-collapse {
             position: absolute;
             top: 100%; /* Positions it below the navbar */
@@ -465,3 +472,4 @@ header {
         border: 1px solid #dee2e6; /* Light border */
         border-radius: 0.25rem; /* Slightly rounded corners */
         box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15); /* Subtle shadow */
+    }
