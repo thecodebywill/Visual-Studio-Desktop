@@ -422,9 +422,9 @@ header {
         width: 100%;
         background-color: #f8f9fa; /* Background color matching the navbar */
         z-index: 1000;
-    }
+    
 
     .navbar-nav {
         margin-top: 10px; /* Adjust the spacing from the top of the navbar */
     }
-}
+
