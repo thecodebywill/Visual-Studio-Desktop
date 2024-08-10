@@ -6,6 +6,7 @@
     <title>Payment Links - Paynder</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="TrialIndex.css">
+    <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
     <style>
         .navbar {
             position: -webkit-sticky;
@@ -13,21 +14,12 @@
             top: 0;
             z-index: 1020;
         }
-        .dropdown-menu {
-            display: none;
-        }
-        .dropdown-menu.show {
-            display: block;
-        }
     </style>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="index.html">Paynder</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
+        <div class="collapse navbar-collapse">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
                     <a class="nav-link" href="createinvoice.html">Create Invoice</a>
@@ -45,9 +37,8 @@
                     <a class="nav-link" href="Dashboard.html">Dashboard</a>
                 </li> 
             </ul>
-            <button type="button" class="btn btn-primary" id="connectWalletButton">Connect Wallet</button>
-            
         </div>
+        <button type="button" class="btn btn-primary" id="connectWalletButton">Connect Wallet</button>
     </nav>
 
     <div class="container mt-5">
