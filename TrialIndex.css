@@ -64,6 +64,7 @@ nav .menu {
 /* Dropdown menu styles */
 nav .menu .dropdown {
     position: relative;
+    
 }
 
 nav .menu .dropdown-content {
@@ -101,6 +102,7 @@ nav .menu .dropdown:hover .dropdown-content {
 
     nav .logo {
         margin-bottom: 10px;
+        align-self: flex-end; /* Aligns the logo to the right */
     }
 
     nav .menu {
