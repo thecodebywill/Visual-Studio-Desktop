@@ -37,14 +37,18 @@ nav .logo {
     font-weight: bold;
     color: #ff5722;
 }
+
+/* Navigation menu */
 nav ul {
     list-style: none;
     display: flex;
     gap: 20px;
+    margin: 0; /* Ensure no margin around the ul */
 }
 
 nav ul li {
     margin: 0;
+    position: relative; /* Needed for dropdown positioning */
 }
 
 nav ul li a {
@@ -53,23 +57,12 @@ nav ul li a {
     font-weight: bold;
 }
 
-/* Full menu (including dropdown) aligned to the left */
-nav .menu {
-    display: flex;
-    gap: 20px;
-    flex-grow: 1;
-    justify-content: flex-start;
-}
-
 /* Dropdown menu styles */
-nav .menu .dropdown {
-    position: relative;
-}
-
 nav .menu .dropdown-content {
     display: none;
     position: absolute;
-    left: 0;
+    left: 0; /* Align dropdown to the left */
+    top: 100%; /* Position dropdown below the parent */
     background-color: #f9f9f9;
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
@@ -108,12 +101,13 @@ nav .menu .dropdown:hover .dropdown-content {
         flex-direction: column;
         align-items: flex-start; /* Aligns the menu items to the left */
         width: 100%;
-        margin-left: auto; /* Ensures no left margin pushes the menu to the center or right */
         padding-left: 0; /* Removes padding if any, from the left */
+        margin-left: 0; /* Ensures no left margin pushes the menu to the center or right */
     }
 
     nav ul li {
         width: 100%; /* Ensures each menu item takes full width in mobile view */
+        position: relative; /* Needed for dropdown positioning */
     }
 
     nav ul li a {
@@ -122,27 +116,28 @@ nav .menu .dropdown:hover .dropdown-content {
         width: 100%; /* Ensures the clickable area spans the full width */
     }
 
-    nav ul .dropdown-content {
+    nav .dropdown-content {
         width: 100%;
-        position: static;
+        position: static; /* Ensure dropdown is aligned properly in mobile view */
         box-shadow: none;
         background-color: #1a1a1a;
     }
 
-    nav ul .dropdown-content a {
+    nav .dropdown-content a {
         padding: 10px 16px;
         color: white;
         border-bottom: 1px solid #333;
     }
 
-    nav ul .dropdown-content a:hover {
+    nav .dropdown-content a:hover {
         background-color: #333;
     }
 
-    nav ul .dropdown:hover .dropdown-content {
+    nav .dropdown:hover .dropdown-content {
         display: block;
     }
 }
+
 /* Hero Section Styles */
 .hero {
     position: relative;
