@@ -320,7 +320,6 @@ nav .menu .dropdown:hover .dropdown-content {
 
 
 #connectWalletButton {
-    position: relative; /* Changed from absolute to relative */
     background-color: orangered;
     color: white;
     border: none;
