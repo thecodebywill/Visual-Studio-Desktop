@@ -289,3 +289,23 @@ window.onclick = function(event) {
         }
     }
 };
+
+//link mobile
+// Mobile friendly: Toggle dropdown menu on button click
+document.getElementById('connectWalletButton').addEventListener('click', function () {
+    var dropdownMenu = document.querySelector('.dropdown-menu');
+    dropdownMenu.classList.toggle('show');
+});
+
+// Close the dropdown if clicking outside of it
+window.onclick = function(event) {
+    if (!event.target.matches('#connectWalletButton')) {
+        var dropdowns = document.getElementsByClassName("dropdown-menu");
+        for (var i = 0; i < dropdowns.length; i++) {
+            var openDropdown = dropdowns[i];
+            if (openDropdown.classList.contains('show')) {
+                openDropdown.classList.remove('show');
+            }
+        }
+    }
+};
