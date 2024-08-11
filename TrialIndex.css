@@ -22,11 +22,11 @@ header {
     z-index: 1020;
 }
 
-* Navigation Styles */
+/* Navigation Styles */
 nav {
     display: flex;
     justify-content: space-between;
-    align-items: center; /* Align items in the center vertically */
+    align-items: center;
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
@@ -40,11 +40,12 @@ nav .logo {
     color: #ff5722;
 }
 
-/* Full menu (including dropdown) aligned to the left */
+/* Full menu (including dropdown and Connect Wallet button) aligned to the left */
 nav .menu {
     order: 1;
     display: flex;
     gap: 20px;
+    align-items: center;
 }
 
 /* Dropdown menu styles */
@@ -56,7 +57,7 @@ nav .menu .dropdown {
 nav .menu .dropdown-content {
     display: none;
     position: absolute;
-    left: 0; /* Ensure the dropdown opens towards the left */
+    left: 0;
     background-color: #f9f9f9;
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
@@ -78,11 +79,22 @@ nav .menu .dropdown:hover .dropdown-content {
     display: block;
 }
 
+/* Connect Wallet button styles */
+nav .menu .connect-wallet {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    display: block;
+}
+
 /* Media query for mobile view */
 @media (max-width: 768px) {
     nav {
         flex-direction: column;
-        align-items: flex-start; /* Align everything to the left on mobile */
+        align-items: flex-start;
     }
 
     nav .logo {
@@ -94,13 +106,37 @@ nav .menu .dropdown:hover .dropdown-content {
     nav .menu {
         order: 1;
         width: 100%;
+        flex-direction: column; /* Stack menu items vertically */
     }
 
+    /* Horizontal menu for header items: products, about, contact, launch */
+    nav .menu .header-items {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+    }
+
+    /* Product features section stacking */
+    .product-features {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    /* Dropdown on the left, including Connect Wallet button */
     nav .menu .dropdown-content {
         left: 0;
         right: auto;
+        width: 100%;
+    }
+
+    nav .menu .connect-wallet {
+        width: 100%;
+        text-align: left;
+        margin-top: 10px;
     }
 }
+
 
 /* Hero Section Styles */
 .hero {
