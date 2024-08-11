@@ -22,7 +22,7 @@ header {
     z-index: 1020;
 }
 
-/* Navigation Styles */
+* Navigation Styles */
 nav {
     display: flex;
     justify-content: space-between;
@@ -101,7 +101,6 @@ nav .menu .dropdown:hover .dropdown-content {
         right: auto;
     }
 }
-
 
 /* Hero Section Styles */
 .hero {
