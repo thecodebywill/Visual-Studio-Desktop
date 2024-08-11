@@ -64,7 +64,7 @@ nav .menu {
 /* Dropdown menu styles */
 nav .menu .dropdown {
     position: relative;
-    
+    align-items: flex-start;
 }
 
 nav .menu .dropdown-content {
@@ -122,6 +122,7 @@ nav .menu .dropdown:hover .dropdown-content {
         padding: 10px 16px;
         color: white;
         border-bottom: 1px solid #333;
+        text-align: left; /* Ensures text within each link is aligned to the left */
     }
 
     nav .menu .dropdown-content a:hover {
