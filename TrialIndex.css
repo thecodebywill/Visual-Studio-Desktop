@@ -26,27 +26,22 @@ header {
 nav {
     display: flex;
     justify-content: space-between;
-    align-items: center; /* Align items in the center vertically */
+    align-items: left;
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
 }
 
-/* Align logo to the right */
 nav .logo {
-    order: 2; /* Move the logo to the right side */
-    margin-left: auto;
     font-size: 24px;
     font-weight: bold;
     color: #ff5722;
 }
 
-/* Align menu dropdown to the left */
 nav ul {
     list-style: none;
     display: flex;
     gap: 20px;
-    order: 1; /* Ensure the menu stays on the left side */
 }
 
 nav ul li {
