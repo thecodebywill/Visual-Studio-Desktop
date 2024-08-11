@@ -37,7 +37,7 @@ nav .logo {
     font-size: 24px;
     font-weight: bold;
     color: #ff5722;
-    margin-right: auto; /* Aligns the logo to the left */
+    margin-right: 0; /* Ensure the logo is always aligned to the right */
 }
 
 /* Navigation menu */
@@ -95,10 +95,11 @@ nav ul .dropdown:hover .dropdown-content {
     }
 
     nav .logo {
+        align-self: flex-end; /* Ensures logo stays on the right */
         margin-bottom: 10px;
-        margin-right: 0; /* Ensure no margin pushing the logo to the center or right */
+        margin-right: 0; /* Ensures no margin pushing the logo to the center or left */
         width: 100%; /* Ensures the logo aligns correctly */
-        text-align: left; /* Aligns the text of the logo to the left */
+        text-align: right; /* Aligns text within the logo to the right */
     }
 
     nav ul {
@@ -121,11 +122,12 @@ nav ul .dropdown:hover .dropdown-content {
     }
 
     nav ul .dropdown-content {
-        width: 100%;
-        position: static; /* Ensure dropdown is aligned properly in mobile view */
+        width: 100%; /* Ensures dropdown spans full width */
+        position: absolute; /* Use absolute positioning for dropdown */
+        left: 0; /* Ensure dropdown is aligned to the left */
+        top: 100%; /* Position below the menu item */
         box-shadow: none;
         background-color: #1a1a1a;
-        left: 0; /* Ensure dropdown is aligned to the left */
     }
 
     nav ul .dropdown-content a {
@@ -142,6 +144,7 @@ nav ul .dropdown:hover .dropdown-content {
         display: block;
     }
 }
+
 
 
 /* Hero Section Styles */
