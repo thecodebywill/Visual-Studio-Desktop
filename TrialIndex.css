@@ -36,7 +36,6 @@ nav .logo {
     font-size: 24px;
     font-weight: bold;
     color: #ff5722;
-    margin-right: auto; /* Ensures the logo is on the right side */
 }
 nav ul {
     list-style: none;
@@ -109,7 +108,7 @@ nav .menu .dropdown:hover .dropdown-content {
         flex-direction: column;
         align-items: flex-start; /* Aligns the menu items to the left */
         width: 100%;
-        margin-left: 0; /* Ensures no left margin pushes the menu to the center or right */
+        margin-left: auto; /* Ensures no left margin pushes the menu to the center or right */
         padding-left: 0; /* Removes padding if any, from the left */
     }
 
