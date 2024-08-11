@@ -101,7 +101,7 @@ nav .menu .dropdown:hover .dropdown-content {
 
     nav .logo {
         margin-bottom: 10px;
-        align-self: flex-end; /* Aligns the logo to the right */
+        margin-right: 0; /* Ensure no margin pushing the logo to the center or right */
     }
 
     nav ul {
