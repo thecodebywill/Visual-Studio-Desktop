@@ -32,10 +32,12 @@ nav {
     padding: 0 20px;
 }
 
+/* Logo Styles */
 nav .logo {
     font-size: 24px;
     font-weight: bold;
     color: #ff5722;
+    margin-right: auto; /* Aligns the logo to the left */
 }
 
 /* Navigation menu */
@@ -58,7 +60,7 @@ nav ul li a {
 }
 
 /* Dropdown menu styles */
-nav .menu .dropdown-content {
+nav ul .dropdown-content {
     display: none;
     position: absolute;
     left: 0; /* Align dropdown to the left */
@@ -69,18 +71,18 @@ nav .menu .dropdown-content {
     z-index: 1;
 }
 
-nav .menu .dropdown-content a {
+nav ul .dropdown-content a {
     color: black;
     padding: 12px 16px;
     text-decoration: none;
     display: block;
 }
 
-nav .menu .dropdown-content a:hover {
+nav ul .dropdown-content a:hover {
     background-color: #f1f1f1;
 }
 
-nav .menu .dropdown:hover .dropdown-content {
+nav ul .dropdown:hover .dropdown-content {
     display: block;
 }
 
@@ -95,6 +97,8 @@ nav .menu .dropdown:hover .dropdown-content {
     nav .logo {
         margin-bottom: 10px;
         margin-right: 0; /* Ensure no margin pushing the logo to the center or right */
+        width: 100%; /* Ensures the logo aligns correctly */
+        text-align: left; /* Aligns the text of the logo to the left */
     }
 
     nav ul {
@@ -116,27 +120,29 @@ nav .menu .dropdown:hover .dropdown-content {
         width: 100%; /* Ensures the clickable area spans the full width */
     }
 
-    nav .dropdown-content {
+    nav ul .dropdown-content {
         width: 100%;
         position: static; /* Ensure dropdown is aligned properly in mobile view */
         box-shadow: none;
         background-color: #1a1a1a;
+        left: 0; /* Ensure dropdown is aligned to the left */
     }
 
-    nav .dropdown-content a {
+    nav ul .dropdown-content a {
         padding: 10px 16px;
         color: white;
         border-bottom: 1px solid #333;
     }
 
-    nav .dropdown-content a:hover {
+    nav ul .dropdown-content a:hover {
         background-color: #333;
     }
 
-    nav .dropdown:hover .dropdown-content {
+    nav ul .dropdown:hover .dropdown-content {
         display: block;
     }
 }
+
 
 /* Hero Section Styles */
 .hero {
