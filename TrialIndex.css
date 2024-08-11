@@ -22,19 +22,17 @@ header {
     z-index: 1020;
 }
 
-* Navigation Styles */
+/* Navigation Styles */
 nav {
     display: flex;
     justify-content: space-between;
-    align-items: center; /* Align items in the center vertically */
+    align-items: center;
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
 }
 
-/* Align logo to the right */
 nav .logo {
-    margin-left: auto;
     font-size: 24px;
     font-weight: bold;
     color: #ff5722;
@@ -42,21 +40,21 @@ nav .logo {
 
 /* Full menu (including dropdown) aligned to the left */
 nav .menu {
-    order: 1;
     display: flex;
     gap: 20px;
+    flex-grow: 1;
+    justify-content: flex-start;
 }
 
 /* Dropdown menu styles */
 nav .menu .dropdown {
     position: relative;
-    display: inline-block;
 }
 
 nav .menu .dropdown-content {
     display: none;
     position: absolute;
-    left: 0; /* Ensure the dropdown opens towards the left */
+    left: 0;
     background-color: #f9f9f9;
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
@@ -82,23 +80,39 @@ nav .menu .dropdown:hover .dropdown-content {
 @media (max-width: 768px) {
     nav {
         flex-direction: column;
-        align-items: flex-start; /* Align everything to the left on mobile */
+        align-items: flex-start;
+        padding: 10px 20px;
     }
 
     nav .logo {
-        order: 2;
-        margin-left: 0;
-        margin-top: 10px;
+        margin-bottom: 10px;
     }
 
     nav .menu {
-        order: 1;
+        flex-direction: column;
+        align-items: flex-start;
         width: 100%;
     }
 
     nav .menu .dropdown-content {
-        left: 0;
-        right: auto;
+        width: 100%;
+        position: static;
+        box-shadow: none;
+        background-color: #1a1a1a;
+    }
+
+    nav .menu .dropdown-content a {
+        padding: 10px 16px;
+        color: white;
+        border-bottom: 1px solid #333;
+    }
+
+    nav .menu .dropdown-content a:hover {
+        background-color: #333;
+    }
+
+    nav .menu .dropdown:hover .dropdown-content {
+        display: block;
     }
 }
 
@@ -169,6 +183,7 @@ nav .menu .dropdown:hover .dropdown-content {
     display: flex;
     gap: 20px;
     justify-content: center;
+    flex-wrap: wrap; /* Ensure responsiveness */
 }
 
 .product-item, .feature-item {
@@ -272,7 +287,7 @@ footer {
     color: white;
     text-align: center;
     padding: 20px 0;
-    margin-top: -20px; /* Adjust margin to remove space */
+    margin-top: -20px;
     z-index: 1;
 }
 
@@ -350,82 +365,78 @@ footer {
 #invoiceForm {
     max-width: 500px;
     margin: 0 auto;
-    padding: 2rem;
-    border: 1px solid #ddd;
-    border-radius: 8px;
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 #invoiceForm label {
     display: block;
-    margin-bottom: 0.5rem;
+    margin-bottom: 5px;
+    text-align: left;
 }
 
-#invoiceOutput {
-    max-width: 500px;
-    margin: 2rem auto;
-    padding: 2rem;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    background-color: #f9f9f9;
-}
-
-/* Wallet Connection Button */
-#connectWalletButton {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    background-color: orangered;
-    color: white;
-    border: none;
-    padding: 10px 20px;
+#invoiceForm input[type="text"], #invoiceForm input[type="email"], #invoiceForm select, #invoiceForm textarea {
+    width: 100%;
+    padding: 10px;
     border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-bottom: 15px;
+}
+
+#invoiceForm button[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    background-color: #ff5722;
+    color: white;
+    font-size: 16px;
     cursor: pointer;
+    transition: background-color 0.3s;
 }
 
-/* Animated Background */
-.animated-background {
-    position: relative;
+#invoiceForm button[type="submit"]:hover {
+    background-color: #e64a19;
+}
+
+/* On-ramp and Off-ramp Form Styles */
+#onRampForm, #offRampForm {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#onRampForm label, #offRampForm label {
+    display: block;
+    margin-bottom: 5px;
+    text-align: left;
+}
+
+#onRampForm input[type="text"], #offRampForm input[type="text"], #onRampForm select, #offRampForm select {
     width: 100%;
-    height: 200px;
-    overflow: hidden;
-    background: linear-gradient(to bottom, #87CEEB, #4682B4); /* Sea colors */
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-bottom: 15px;
 }
 
-.animated-background::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
+#onRampForm button[type="submit"], #offRampForm button[type="submit"] {
     width: 100%;
-    height: 100%;
-    background: rgba(255, 255, 255, 0.2);
-    z-index: 1;
-    animation: move 5s linear infinite;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    background-color: #ff5722;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
 }
 
-@keyframes move {
-    0% {
-        transform: translateX(-100%);
-    }
-    100% {
-        transform: translateX(100%);
-    }
-}
-
-/* Custom animation delay */
-.animated-background[data-delay="1"]::before {
-    animation-delay: 1s;
-}
-
-.animated-background[data-delay="2"]::before {
-    animation-delay: 2s;
-}
-
-.animated-background[data-delay="3"]::before {
-    animation-delay: 3s;
-}
-
-/* Additional Styles */
-.text-primary {
-    color: orangered;
+#onRampForm button[type="submit"]:hover, #offRampForm button[type="submit"]:hover {
+    background-color: #e64a19;
 }
