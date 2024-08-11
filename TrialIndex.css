@@ -321,12 +321,7 @@ nav .menu .dropdown:hover .dropdown-content {
 
 #connectWalletButton {
     background-color: orangered;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    z-index: 100; /* Ensures it's above other elements */
+    
 }
 /* Additional CSS for the animated background effect */
 .animated-background {
