@@ -95,7 +95,7 @@ nav .menu .dropdown:hover .dropdown-content {
 @media (max-width: 768px) {
     nav {
         flex-direction: column;
-        align-items: flex-start; /* Aligns the entire nav to the left */
+        align-items: flex-start;
         padding: 10px 20px;
     }
 
@@ -104,45 +104,35 @@ nav .menu .dropdown:hover .dropdown-content {
         align-self: flex-end; /* Aligns the logo to the right */
     }
 
-    nav ul {
+    nav .menu {
         flex-direction: column;
-        align-items: flex-start; /* Aligns the menu items to the left */
+        align-items: flex-start;
         width: 100%;
-        margin-left: 0; /* Ensures no left margin pushes the menu to the center or right */
-        padding-left: 0; /* Removes padding if any, from the left */
     }
 
-    nav ul li {
-        width: 100%; /* Ensures each menu item takes full width in mobile view */
-    }
-
-    nav ul li a {
-        padding: 10px 16px; /* Adjust padding if needed */
-        text-align: left; /* Ensures text within each link is aligned to the left */
-        width: 100%; /* Ensures the clickable area spans the full width */
-    }
-
-    nav ul .dropdown-content {
+    nav .menu .dropdown-content {
         width: 100%;
         position: static;
         box-shadow: none;
         background-color: #1a1a1a;
     }
 
-    nav ul .dropdown-content a {
+    nav .menu .dropdown-content a {
         padding: 10px 16px;
         color: white;
         border-bottom: 1px solid #333;
+        text-align: left; /* Ensures text within each link is aligned to the left */
     }
 
-    nav ul .dropdown-content a:hover {
+    nav .menu .dropdown-content a:hover {
         background-color: #333;
     }
 
-    nav ul .dropdown:hover .dropdown-content {
+    nav .menu .dropdown:hover .dropdown-content {
         display: block;
     }
 }
+
 /* Hero Section Styles */
 .hero {
     position: relative;
