@@ -64,7 +64,6 @@ nav .menu {
 /* Dropdown menu styles */
 nav .menu .dropdown {
     position: relative;
-    align-items: flex-start;
 }
 
 nav .menu .dropdown-content {
