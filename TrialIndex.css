@@ -508,7 +508,7 @@ header {
 }
 
 .navbar-nav .dropdown-item {
-    text-align: center; /* Center the text */
+    text-align: left; /* Center the text */
 }
 
 /* Additional styling to make the dropdown more visible */
