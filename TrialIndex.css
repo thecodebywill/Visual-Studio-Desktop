@@ -63,7 +63,7 @@ nav ul li a {
 /* Dropdown menu styles */
 nav ul .dropdown-content {
     display: none;
-    position: absolute;
+    position: relative;
     left: 0; /* Align dropdown to the left */
     top: 100%; /* Position dropdown below the parent */
     background-color: #f9f9f9;
@@ -102,7 +102,7 @@ nav ul .dropdown:hover .dropdown-content {
         margin-right: 0; /* Ensures no margin pushing the logo to the center or left */
         width: 100%; /* Ensures the logo aligns correctly */
         text-align: right; /* Aligns text within the logo to the right */
-        align-self: flex-end;
+       
     }
 
     nav ul {
