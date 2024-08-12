@@ -38,7 +38,7 @@ nav .logo {
     font-weight: bold;
     color: #ff5722;
     margin: 0; /* Ensure the logo is always aligned to the righ */
-
+    margin-left: auto;
 }
 
 /* Navigation menu */
