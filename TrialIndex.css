@@ -155,6 +155,7 @@ nav ul .dropdown:hover .dropdown-content {
 .navbar-toggler {
     margin-right: 0; /* Ensure no margin on the left side */
     margin-left: auto; /* Pushes the toggler to the left */
+    margin-bottom: 10px;
 
 }
 .navbar-collapse {
