@@ -152,7 +152,15 @@ nav ul .dropdown:hover .dropdown-content {
         display: block;
     }
 }
-
+.dropdown-menu {
+    width: 100%; /* Ensures dropdown spans full width */
+    position: absolute; /* Use absolute positioning for dropdown */
+    left: 0; /* Align dropdown to the left */
+    top: 100%; /* Position below the menu item */
+    box-shadow: none;
+    background-color: #1a1a1a;
+    display: none; /* Hide dropdown by default */
+}
 
 
 /* Hero Section Styles */
