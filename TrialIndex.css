@@ -152,8 +152,11 @@ nav ul .dropdown:hover .dropdown-content {
         display: block;
     }
 }
+.navbar-toggler {
+    margin-right: 0; /* Ensure no margin on the left side */
+    margin-left: auto; /* Pushes the toggler to the left */
 
-
+}
 /* Hero Section Styles */
 .hero {
     position: relative;
