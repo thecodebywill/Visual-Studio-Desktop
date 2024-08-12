@@ -113,7 +113,8 @@ nav ul .dropdown:hover .dropdown-content {
         align-items: flex-start; /* Aligns the menu items to the left */
         width: 100%;
         padding-left: 0; /* Removes padding if any, from the left */
-        margin-left: 0; /* Ensures no left margin pushes the menu to the center or right */
+        margin-left: auto; /* Ensures no left margin pushes the menu to the center or right */
+
     }
 
     nav ul li {
