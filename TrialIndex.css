@@ -157,6 +157,11 @@ nav ul .dropdown:hover .dropdown-content {
     margin-left: auto; /* Pushes the toggler to the left */
 
 }
+.navbar-collapse {
+    display: flex;
+    flex: 1;
+    justify-content: flex-end; /* Align items to the right side */
+}
 /* Hero Section Styles */
 .hero {
     position: relative;
