@@ -158,11 +158,8 @@ nav ul .dropdown:hover .dropdown-content {
     margin-bottom: 10px;
 
 }
-.navbar-collapse {
-    display: flex;
-    flex: 1;
-    align-items: flex-start; /* Aligns the entire nav to the left */
-}
+
+
 /* Hero Section Styles */
 .hero {
     position: relative;
