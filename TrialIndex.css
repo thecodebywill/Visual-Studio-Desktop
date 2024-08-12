@@ -136,6 +136,7 @@ nav ul .dropdown:hover .dropdown-content {
         top: 100%; /* Position below the menu item */
         box-shadow: none;
         background-color: #1a1a1a;
+        margin-left: auto;
     }
 
     nav ul .dropdown-content a {
