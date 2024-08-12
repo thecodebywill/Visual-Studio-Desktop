@@ -38,7 +38,7 @@ nav .logo {
     font-weight: bold;
     color: #ff5722;
     margin: 0; /* Ensure the logo is always aligned to the righ */
-    align-self: flex-end;
+
 }
 
 /* Navigation menu */
@@ -102,6 +102,7 @@ nav ul .dropdown:hover .dropdown-content {
         margin-right: 0; /* Ensures no margin pushing the logo to the center or left */
         width: 100%; /* Ensures the logo aligns correctly */
         text-align: right; /* Aligns text within the logo to the right */
+        align-self: flex-end;
     }
 
     nav ul {
