@@ -227,7 +227,7 @@ def send_celo_payment(wallet_address, amount):
     contract = web3.eth.contract(address=contract_address, abi=contract_abi)
 
     sender_address = "0x4f6bBf67e1A2314799f51C301170FAFFCCd466C2"
-    private_key = "61efed6aaeff37fe66ee54a61bf5c2ce43a599a4fc4e309daeb9d12a679a6742"  # Replace with actual private key
+    private_key = os.getenv('PRIVATE_KEY') # Added to environment viriable
 
     nonce = web3.eth.getTransactionCount(sender_address)
     tx = contract.functions.transfer(wallet_address, web3.toWei(amount, 'ether')).buildTransaction({
