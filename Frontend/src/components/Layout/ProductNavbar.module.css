@@ -1,0 +1,34 @@
+.productNav {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    padding: 0.8rem 2rem;
+    background-color: #000000;
+    height: 60px;
+}
+
+.productNav ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #000000;
+    height: 60px;
+    list-style: none;
+    gap: 1.5rem;
+    margin: 0 auto;
+    padding: 0;
+}
+
+.productNav ul li a {
+    text-decoration: none;
+    color: white;
+    font-weight: 500;
+    transition: color 0.3s ease;
+    padding: 6px 12px;
+    border-radius: 4px;
+}
+
+.productNav ul li a:hover,
+.productNav ul li a.active {
+    color: #f1501a;
+}

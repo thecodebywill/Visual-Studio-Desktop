@@ -1,0 +1,163 @@
+/* General Body Styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+    margin: 0;
+    padding: 0;
+}
+
+/* Navbar Styling */
+.navbar {
+    margin-bottom: 20px;
+}
+
+.navbar-brand {
+    font-size: 1.5rem;
+}
+
+/* Container Styling */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Toggle Buttons */
+.btn-group {
+    margin-bottom: 20px;
+}
+
+/* Button Styling */
+.btn {
+    border-radius: 5px;
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+    margin-right: 10px;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    border: none;
+    color: #fff;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    border: none;
+    color: #fff;
+}
+
+.btn-danger:hover {
+    background-color: #c82333;
+}
+
+/* Section Headers */
+h2 {
+    color: #343a40;
+    margin-bottom: 20px;
+    font-size: 1.75rem;
+}
+
+/* Sections */
+.section {
+    display: none;
+}
+
+.section.active {
+    display: block;
+}
+
+/* Table Styling */
+.table {
+    width: 100%;
+    margin-bottom: 1rem;
+    background-color: #fff;
+    border-collapse: collapse;
+}
+
+.table th, .table td {
+    padding: 1rem;
+    vertical-align: top;
+    border-top: 1px solid #dee2e6;
+}
+
+.table thead th {
+    background-color: #007bff;
+    color: #fff;
+}
+
+.table tbody tr:nth-child(odd) {
+    background-color: #f9f9f9;
+}
+
+/* Wallet Balance Styling */
+#walletBalances p {
+    font-size: 1.1rem;
+    margin: 0;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Modal Styling */
+.modal-content {
+    border-radius: 8px;
+}
+
+.modal-header {
+    border-bottom: 1px solid #dee2e6;
+}
+
+.modal-title {
+    font-size: 1.5rem;
+}
+
+.modal-footer {
+    border-top: 1px solid #dee2e6;
+}
+
+.close {
+    font-size: 1.5rem;
+}
+
+/* Form Elements */
+.form-control {
+    border-radius: 5px;
+    border: 1px solid #ced4da;
+    padding: 0.5rem;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-control:disabled {
+    background-color: #e9ecef;
+}
+
+/* Responsive Styling */
+@media (max-width: 768px) {
+    .navbar-brand {
+        font-size: 1.25rem;
+    }
+
+    .container {
+        padding: 10px;
+    }
+
+    .table th, .table td {
+        font-size: 0.875rem;
+    }
+}
+/* Ensure sections are hidden initially except for "Home" view */
+.section {
+    display: none;
+}
+
+/* Style for visible sections */
+.section.show {
+    display: block;
+}
