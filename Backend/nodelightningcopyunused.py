@@ -5,8 +5,8 @@ from flask_cors import CORS
 from pymongo import MongoClient
 import uuid
 import datetime
-import lightning_pb2_grpc
-import lightning_pb2
+import Backend.lightning_pb2_grpc as lightning_pb2_grpc
+import Backend.lightning_pb2 as lightning_pb2
 from web3 import Web3
 from bitcoin import random_key, privtopub, pubtoaddr
 

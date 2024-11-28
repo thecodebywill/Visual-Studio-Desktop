@@ -3,7 +3,7 @@
 import grpc
 import warnings
 
-import lightning_pb2 as lightning__pb2
+import Backend.lightning_pb2 as lightning__pb2
 
 GRPC_GENERATED_VERSION = '1.65.0'
 GRPC_VERSION = grpc.__version__
