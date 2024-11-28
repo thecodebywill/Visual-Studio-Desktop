@@ -14,10 +14,10 @@
       "resolveJsonModule": true,
       "isolatedModules": true,
       "noEmit": true,
-      "jsx": "react",  // Changed this line to specify JSX runtime
-      "baseUrl": "src"
+      "jsx": "react",  
+      "baseUrl": "Frontend/src"
     },
-    "include": ["src"],
+    "include": ["Frontend/src"],
     "exclude": ["node_modules"]
   }
   
