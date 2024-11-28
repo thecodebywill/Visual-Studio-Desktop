@@ -15,9 +15,9 @@
       "isolatedModules": true,
       "noEmit": true,
       "jsx": "react",  
-      "baseUrl": "Frontend/src"
+      "baseUrl": "src"
     },
-    "include": ["Frontend/src"],
+    "include": ["src"],
     "exclude": ["node_modules"]
   }
   

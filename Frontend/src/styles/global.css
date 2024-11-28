@@ -1,4 +1,4 @@
-nav {
+/* nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -6,7 +6,7 @@ nav {
     background-color: #171616;
     height: 50px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-}
+} */
 
 .hero {
     min-height: 70vh;
@@ -281,6 +281,7 @@ footer p {
     font-weight: bold;
     flex-shrink: 0;
     justify-self: start;
+    text-decoration: none;
 }
 
 .products {
@@ -498,3 +499,73 @@ select.form-control {
     }
 }
 
+nav, .product-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 10rem;
+    background-color: #171616;
+    height: 50px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+nav ul, .product-nav ul {
+    display: flex;
+    list-style: none;
+    gap: 1.5rem;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li a, .product-nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-weight: 500;
+    transition: color 0.3s ease;
+    padding: 8px 16px;
+    border-radius: 4px;
+}
+
+nav ul li a:hover, .product-nav ul li a:hover {
+    color: #ff7f50;
+}
+
+.product-nav {
+    display: grid;
+    grid-template-columns: 200px 1fr 200px;
+}
+
+.product-nav ul {
+    justify-content: center;
+    margin: 0 auto;
+}
+
+.toggle-buttons {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.toggle-buttons .btn {
+    flex: 1;
+    padding: 0.8rem;
+    transition: all 0.3s ease;
+}
+
+.toggle-buttons .btn-primary {
+    background: #f1501a;
+    color: white;
+}
+
+.toggle-buttons .btn-outline-secondary {
+    background: transparent;
+    border: 1px solid #f1501a;
+    color: #f1501a;
+}
+
+.toggle-buttons .btn-outline-secondary:hover {
+    background: rgba(241, 80, 26, 0.1);
+}

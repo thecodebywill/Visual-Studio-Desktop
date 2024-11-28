@@ -27,7 +27,7 @@ const Navbar = () => {
           {isHomePage ? (
             <a href="#contact">Contact</a>
           ) : (
-            <Link to="/#contact">Contact</Link>
+            <Link to="/#Contacts">Contact</Link>
           )}
         </li>
         <li><Link to="/invoice">Launch Beta</Link></li>

@@ -8,10 +8,10 @@ import About from './components/Home/About';
 import InvoiceGenerator from './components/createinvoice';
 import Contact from 'components/Home/Contact';
 import Bubbles from 'components/Bubbles';
-// import SendPayment from './components/Send';
-// import PaymentLinks from './components/PaymentLinks';
-// import OnRampOffRamp from './components/OnRampOffRamp';
-// import Dashboard from './components/Dashboard';
+import SendPayments from 'components/Send';
+import PaymentLinks from './components/Links';
+import OnRampOffRamp from './components/OnRampOffRamp';
+import Dashboard from './components/Dashboard';
 
 const App = () => {
   return (
@@ -36,10 +36,10 @@ const App = () => {
             <InvoiceGenerator />
           </>
         } />
-        {/* <Route path="/send" element={
+        <Route path="/send" element={
           <>
             <ProductNavbar />
-            <SendPayment />
+            <SendPayments />
           </>
         } />
         <Route path="/links" element={
@@ -54,7 +54,7 @@ const App = () => {
             <OnRampOffRamp />
           </>
         } />
-        <Route path="/dashboard" element={
+        {/* <Route path="/dashboard" element={
           <>
             <ProductNavbar />
             <Dashboard />
