@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-
-const Contact = () => {
+const Contact: React.FC = () => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -13,7 +12,7 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact-form" className="contact">
+    <section id="contact" className="contact">
       <h2>Contact Us</h2>
       <form onSubmit={handleSubmit}>
         <input 
@@ -38,10 +37,17 @@ const Contact = () => {
         />
         <button type="submit">Submit</button>
       </form>
-      <p>Email: info@paynder.com</p>
-      <p>Phone: +254795414186</p>
+      <div className="contact-links">
+        <a href="mailto:info@paynder.com" className="contact-item">
+          <i className="far fa-envelope"></i>
+          info@paynder.com
+        </a>
+        <a href="tel:+254795414186" className="contact-item">
+          <i className="fas fa-phone"></i>
+          +254 795 414 186
+        </a>
+      </div>
     </section>
   );
 };
-
 export default Contact;

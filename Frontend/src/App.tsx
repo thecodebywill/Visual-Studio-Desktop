@@ -11,7 +11,8 @@ import Bubbles from 'components/Bubbles';
 import SendPayments from 'components/Send';
 import PaymentLinks from './components/Links';
 import OnRampOffRamp from './components/OnRampOffRamp';
-import Dashboard from './components/Dashboard';
+// import Dashboard from './components/Dashboard';
+import Footer from 'components/Footer';
 
 const App = () => {
   return (
@@ -26,32 +27,41 @@ const App = () => {
             <Products />
             <About />
             <Contact />
+            <Footer />
           </>
         } />
 
         {/* Product interface routes */}
         <Route path="/invoice" element={
           <>
+            <Bubbles />
             <ProductNavbar />
             <InvoiceGenerator />
+            <Footer />
           </>
         } />
         <Route path="/send" element={
           <>
+            <Bubbles />
             <ProductNavbar />
             <SendPayments />
+            <Footer />
           </>
         } />
         <Route path="/links" element={
           <>
+            <Bubbles />
             <ProductNavbar />
             <PaymentLinks />
+            <Footer />
           </>
         } />
         <Route path="/onramp" element={
           <>
+            <Bubbles />
             <ProductNavbar />
             <OnRampOffRamp />
+            <Footer />
           </>
         } />
         {/* <Route path="/dashboard" element={
@@ -64,5 +74,4 @@ const App = () => {
     </Router>
   );
 };
-
 export default App;
