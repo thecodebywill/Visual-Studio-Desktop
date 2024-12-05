@@ -1,587 +1,710 @@
 .hero {
-    min-height: 70vh;
-    display: flex;
-    align-items: center;
-    text-align: center;
-    justify-content: center;
-    padding: 4rem 2rem;
-    background: transparent;
-    padding-bottom: 2rem;
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  padding: 4rem 2rem;
+  background: transparent;
+  padding-bottom: 2rem;
 }
 
 .hero-content {
-    max-width: 800px;
-    padding: 0 20px;
+  max-width: 800px;
+  padding: 0 20px;
 }
 
 .hero-content h1 {
-    font-size: 3.5rem;
-    line-height: 1.2;
-    letter-spacing: -0.5px;
-    margin-bottom: 1rem;
-    color: white;
+  font-size: 3.5rem;
+  line-height: 1.2;
+  letter-spacing: -0.5px;
+  margin-bottom: 1rem;
+  color: white;
 }
 
 .hero-content p {
-    color: white;
-    font-size: 1.2rem;
-    margin-bottom: 2rem;
+  color: white;
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
 }
 
 .contact {
-    min-height: 60vh;
-    padding: 4rem 2rem;
-    background: transparent;
-    text-align: center;
-    position: relative;
+  min-height: 60vh;
+  padding: 4rem 2rem;
+  background: transparent;
+  text-align: center;
+  position: relative;
 }
 
 .contact h2 {
-    color: white;
-    font-size: 2.8rem;
-    margin-bottom: 3rem;
-    letter-spacing: -0.5px;
+  color: white;
+  font-size: 2.8rem;
+  margin-bottom: 3rem;
+  letter-spacing: -0.5px;
 }
 
 .contact form {
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 2.5rem;
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 16px;
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.2);
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 2.5rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.2);
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
 }
 
-.contact input, .contact textarea {
-    width: 90%;
-    padding: 1rem 1.5rem;
-    border-radius: 8px;
-    border: 1px solid rgba(255, 255, 255, 0,2);
-    background: rgba(255, 255, 255, 0.08);
-    color: white;
-    font-size: 1rem;
-    transition: all 0.3s ease;
+.contact input,
+.contact textarea {
+  width: 90%;
+  padding: 1rem 1.5rem;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0, 2);
+  background: rgba(255, 255, 255, 0.08);
+  color: white;
+  font-size: 1rem;
+  transition: all 0.3s ease;
 }
 
-.contact input:focus, .contact textarea:focus {
-    outline: none;
-    border-color: #f1501a;
-    background: rgba(255, 255, 255, 0.12);
+.contact input:focus,
+.contact textarea:focus {
+  outline: none;
+  border-color: #f1501a;
+  background: rgba(255, 255, 255, 0.12);
 }
 
 .contact textarea {
-    min-height: 150px;
-    resize: vertical;
+  min-height: 150px;
+  resize: vertical;
 }
 
 .contact button {
-    background: #f1501a;
-    color: white;
-    padding: 1rem 2.5rem;
-    border: none;
-    border-radius: 8px;
-    font-size: 1.1rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
+  background: #f1501a;
+  color: white;
+  padding: 1rem 2.5rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
 
 .contact button:hover {
-    transform: translateY(-2px);
-    background-color: #ff6b3d;
-    box-shadow: 0 5px 15px rgba(241, 80, 26, 0.3);
+  transform: translateY(-2px);
+  background-color: #ff6b3d;
+  box-shadow: 0 5px 15px rgba(241, 80, 26, 0.3);
 }
 
 .contact .contact-info {
-    margin-top: 3rem;
-    display: flex;
-    justify-content: center;
-    gap: 3rem;
+  margin-top: 3rem;
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
 }
 
 .contact p {
-    color: white;
-    margin-top: 2rem;
-    font-size: 1.1rem;
-    opacity: 0.9;
+  color: white;
+  margin-top: 2rem;
+  font-size: 1.1rem;
+  opacity: 0.9;
 }
 
 .cta-button {
-    display: inline-block;
-    padding: 0.8rem 1.5rem;
-    background-color: #f1501a;
-    color: white;
-    text-decoration: none;
-    border-radius: 4px;
-    margin-top: 1rem;
-    font-weight: bold;
-    transition: transform 0.2s ease, background-color 0.3s ease;
+  display: inline-block;
+  padding: 0.8rem 1.5rem;
+  background-color: #f1501a;
+  color: white;
+  text-decoration: none;
+  border-radius: 4px;
+  margin-top: 1rem;
+  font-weight: bold;
+  transition: transform 0.2s ease, background-color 0.3s ease;
 }
 
 .cta-button:hover {
-    transform: translateY(-2px);
-    background-color: #ff6b3d;
+  transform: translateY(-2px);
+  background-color: #ff6b3d;
 }
 
 /* Add these styles to your existing global.css */
 
 body {
-    margin: 0;
-    padding: 0;
-    background: linear-gradient(to right, #151515, #3a3636);
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    min-height: 100vh;
-    color: white;
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(to right, #151515, #3a3636);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  min-height: 100vh;
+  color: white;
 }
 
-.hero, .products, .about, .contact, footer {
-    background: transparent;
+.hero,
+.products,
+.about,
+.contact,
+footer {
+  background: transparent;
 }
 
 header {
-    position: sticky;
-    top: 0;
-    z-index: 1020;
-    background: white;
+  position: sticky;
+  top: 0;
+  z-index: 1020;
+  background: white;
 }
 
 nav ul {
-    display: flex;
-    list-style: none;
-    gap: 1.5rem;
-    margin: 0;
-    padding: 0;
+  display: flex;
+  list-style: none;
+  gap: 1.5rem;
+  margin: 0;
+  padding: 0;
 }
 
 nav ul li a {
-    text-decoration: none;
-    color: white;
-    font-weight: 500;
-    transition: color 0.3s ease;
-    padding: 8px 16px;
-    border-radius: 4px;
+  text-decoration: none;
+  color: white;
+  font-weight: 500;
+  transition: color 0.3s ease;
+  padding: 8px 16px;
+  border-radius: 4px;
 }
 
 nav ul li a:hover {
-    color: #ff7f50;
-    padding: 8px 16px;
-    border-radius: 4px;
+  color: #ff7f50;
+  padding: 8px 16px;
+  border-radius: 4px;
 }
 
 .feature-item {
-    text-align: center;
-    padding: 1.5rem;
-    border-radius: 8px;
-    background: white;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  text-align: center;
+  padding: 1.5rem;
+  border-radius: 8px;
+  background: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .about {
-    min-height: 60vh;
-    padding: 4rem 2rem;
-    background: transparent;
-    max-width: 1100px;
-    margin: 0 auto;
-    text-align: center;
+  min-height: 60vh;
+  padding: 4rem 2rem;
+  background: transparent;
+  max-width: 1100px;
+  margin: 0 auto;
+  text-align: center;
 }
 
 .about h2 {
-    color: white;
-    font-size: 2.8rem;
-    margin-bottom: 2rem;
-    letter-spacing: -0.5px;
-    text-align: center;
+  color: white;
+  font-size: 2.8rem;
+  margin-bottom: 2rem;
+  letter-spacing: -0.5px;
+  text-align: center;
 }
 
 .about h3 {
-    text-align: center;
-    color: #f1501a;
-    font-size: 1.8rem;
-    margin: 2rem 0 1rem;
-    padding: 0 1rem;
+  text-align: center;
+  color: #f1501a;
+  font-size: 1.8rem;
+  margin: 2rem 0 1rem;
+  padding: 0 1rem;
 }
 
 .about p {
-    color: white;
-    font-size: 1.1rem;
-    line-height: 1.6;
-    margin-bottom: 2res;
-    max-width: 800px;
-    margin: 1.5rem auto;
-    text-align: left;
-    padding: 0 1rem;
+  color: white;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 2res;
+  max-width: 800px;
+  margin: 1.5rem auto;
+  text-align: left;
+  padding: 0 1rem;
 }
 
 .about ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 2rem auto;
-    max-width: 800px;
-    text-align: left;
+  list-style-type: none;
+  padding: 0;
+  margin: 2rem auto;
+  max-width: 800px;
+  text-align: left;
 }
 
 .about ul li {
-    margin: 1rem 0;
-    padding-left: 2rem;
-    position: relative;
-    color: white;
-    font-size: 1.1rem;
-    line-height: 1.8;
+  margin: 1rem 0;
+  padding-left: 2rem;
+  position: relative;
+  color: white;
+  font-size: 1.1rem;
+  line-height: 1.8;
 }
 
 .about ul li:before {
-    content: "•";
-    position: absolute;
-    left: 0.5rem;
-    color: #f1501a;
-    font-size: 1.2rem;
+  content: "•";
+  position: absolute;
+  left: 0.5rem;
+  color: #f1501a;
+  font-size: 1.2rem;
 }
 
 footer {
-    text-align: center;
-    padding: 2rem;
-    background: transparent;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    margin-top: 2rem;
-    color: white;
+  text-align: center;
+  padding: 2rem;
+  background: transparent;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  margin-top: 2rem;
+  color: white;
 }
 
 .contact-links {
-    display: flex;
-    justify-content: center;
-    gap: 2rem;
-    margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 2rem;
 }
 
 .contact-item {
-    color: white;
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.5rem 1rem;
-    border-radius: 8px;
-    transition: all 0.3s ease;
+  color: white;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  transition: all 0.3s ease;
 }
 
 .contact-item:hover {
-    background: rgba(255, 255, 255, 0.1);
-    transform: translateY(-2px);
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateY(-2px);
 }
 
 footer p {
-    color: white;
-    font-size: 1rem;
-    opacity: 0.8;
+  color: white;
+  font-size: 1rem;
+  opacity: 0.8;
 }
 
 .animated-background {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
 }
 
 .logo {
-    color: #f1501a;
-    font-size: 1.5rem;
-    font-weight: bold;
-    flex-shrink: 0;
-    justify-self: start;
-    text-decoration: none;
+  color: #f1501a;
+  font-size: 1.5rem;
+  font-weight: bold;
+  flex-shrink: 0;
+  justify-self: start;
+  text-decoration: none;
 }
 
 .products {
-    min-height: 60vh;
-    display: flex;
-    flex-direction:  column;
-    align-items: center;
-    padding: 2rem 2rem 4rem;
-    background: transparent
+  min-height: 60vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem 2rem 4rem;
+  background: transparent;
 }
 
 .products h2 {
-    color: white;
-    font-size: 2.8rem;
-    margin-bottom: 3rem;
-    text-align: center;
-    letter-spacing: -0.5px;
+  color: white;
+  font-size: 2.8rem;
+  margin-bottom: 3rem;
+  text-align: center;
+  letter-spacing: -0.5px;
 }
 
 .product-list {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 2rem;
-    padding: 2rem;
-    max-width: 1100px;
-    width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 2rem;
+  padding: 2rem;
+  max-width: 1100px;
+  width: 100%;
 }
 
-.product-item, .feature-item {
-    text-align: center;
-    padding: 1.8rem;
-    border-radius: 12px;
-    background: rgba(255, 255, 255, 0.05);
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+.product-item,
+.feature-item {
+  text-align: center;
+  padding: 1.8rem;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.product-item:hover, .feature-item:hover {
-    transform: translateY(-5px);
-    background: rgba(255, 255, 255, 0.1);
-    box-shadow: 0 6px 12px rgba(241, 80, 26, 0.15);
+.product-item:hover,
+.feature-item:hover {
+  transform: translateY(-5px);
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 6px 12px rgba(241, 80, 26, 0.15);
 }
 
-.product-item img, .feature-item img {
-    width: 65px;
-    height: 65px;
-    margin-bottom: 1.2rem;
+.product-item img,
+.feature-item img {
+  width: 65px;
+  height: 65px;
+  margin-bottom: 1.2rem;
 }
 
-.product-item h3, .feature-item h3 {
-    color: #f1501a;
-    font-size: 1.3rem;
-    margin: 0.8rem 0;
+.product-item h3,
+.feature-item h3 {
+  color: #f1501a;
+  font-size: 1.3rem;
+  margin: 0.8rem 0;
 }
 
-.product-item p, .feature-item p {
-    color: rgba(255, 255, 255, 0.9);
-    line-height: 1.5;
-    font-size: 1rem;
+.product-item p,
+.feature-item p {
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.5;
+  font-size: 1rem;
 }
 .bubbles {
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    pointer-events: none;
-    z-index: -1;
-    overflow: hidden;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: -1;
+  overflow: hidden;
 }
 /* Product Interface Styling */
 .product-interface {
-    background: linear-gradient(to right, #151515, #3a3636);
-    min-height: 100vh;
-    padding: 2rem;
+  background: linear-gradient(to right, #151515, #3a3636);
+  min-height: 100vh;
+  padding: 2rem;
 }
 
 .form-container {
-    max-width: 800px;
-    margin: 2rem auto;
-    padding: 2.5rem;
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 16px;
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.2);
-    position: relative;
-    z-index: 1;
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 2.5rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.2);
+  position: relative;
+  z-index: 1;
 }
 
 .form-container h2 {
-    color: white;
-    font-size: 2rem;
-    margin-bottom: 2rem;
-    text-align: center;
+  color: white;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  text-align: center;
 }
 
 .form-group {
-    margin-bottom: 1.5rem;
+  margin-bottom: 1.5rem;
 }
 
 .form-group label {
-    color: white;
-    margin-bottom: 0.5rem;
-    display: block;
-    font-size: 1.1rem;
+  color: white;
+  margin-bottom: 0.5rem;
+  display: block;
+  font-size: 1.1rem;
 }
 
 .form-control {
-    background: rgba(255, 255, 255, 0.08);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    color: white;
-    border-radius: 8px;
-    padding: 1rem;
-    width: 100%;
-    font-size: 1rem;
-    transition: all 0.3s ease;
-    position: relative;
-    z-index: 2;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  border-radius: 8px;
+  padding: 1rem;
+  width: 100%;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 2;
 }
 
 .form-control:focus {
-    background: rgba(255, 255, 255, 0.12);
-    border-color: #f1501a;
-    box-shadow: none;
-    color: white;
-    outline: none;
+  background: rgba(255, 255, 255, 0.12);
+  border-color: #f1501a;
+  box-shadow: none;
+  color: white;
+  outline: none;
 }
 
 select.form-control {
-    appearance: none;
-    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3e%3cpath d='M7 10l5 5 5-5z'/%3e%3c/svg%3e");
-    background-repeat: no-repeat;
-    background-position: right 1rem center;
-    background-size: 1.5em;
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3e%3cpath d='M7 10l5 5 5-5z'/%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  background-size: 1.5em;
 }
 
 .btn-primary {
-    width: 100%;
-    background: #f1501a;
-    border: none;
-    padding: 1rem;
-    color: white;
-    font-size: 1.1rem;
-    font-weight: 600;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    margin-top: 1rem;
+  width: 100%;
+  background: #f1501a;
+  border: none;
+  padding: 1rem;
+  color: white;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 1rem;
 }
 
 .btn-primary:hover {
-    background: #ff6b3d;
-    transform: translateY(-2px);
-    box-shadow: 0 5px rgba(241, 80, 26, 0.3);
+  background: #ff6b3d;
+  transform: translateY(-2px);
+  box-shadow: 0 5px rgba(241, 80, 26, 0.3);
 }
 
 /* Product Navbar Styling */
 
 #connectWalletButton {
-    background: #f1501a;
-    color: white;
-    border: none;
-    padding: 0.3rem 0.6rem;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    font-size: 0.8rem;
-    width: auto;
-    min-width: min-content;
-    height: 30px;
-    margin-left: auto;
-    flex-shrink: 0;
-    justify-self: end;
+  background: #f1501a;
+  color: white;
+  border: none;
+  padding: 0.3rem 0.6rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.8rem;
+  width: auto;
+  min-width: min-content;
+  height: 30px;
+  margin-left: auto;
+  flex-shrink: 0;
+  justify-self: end;
 }
 
 #connectWalletButton:hover {
-    background: #ff6b3d;
-    transform: translateY(-2px);
+  background: #ff6b3d;
+  transform: translateY(-2px);
 }
 
 .bubbles {
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    pointer-events: none;
-    z-index: -1;
-    overflow: hidden;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: -1;
+  overflow: hidden;
 }
 
 .bubble {
-    position: absolute;
-    bottom: -100px;
-    width: 40px;
-    height: 40px;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 50%;
-    opacity: 0.5;
-    animation: rise 10s infinite ease-in;
+  position: absolute;
+  bottom: -100px;
+  width: 40px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  opacity: 0.5;
+  animation: rise 10s infinite ease-in;
 }
 
 @keyframes rise {
-    0% {
-        bottom: -100px;
-        transform: translateX(0);
-    }
-    50% {
-        transform: translateX(100px);
-    }
-    100% {
-        bottom: 100vh;
-        transform: translateX(-200px);
-    }
+  0% {
+    bottom: -100px;
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(100px);
+  }
+  100% {
+    bottom: 100vh;
+    transform: translateX(-200px);
+  }
 }
 
-nav, .product-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 10rem;
-    background-color: #171616;
-    height: 50px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    position: sticky;
-    top: 0;
-    z-index: 1000;
+nav,
+.product-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 10rem;
+  background-color: #171616;
+  height: 50px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
 
-nav ul, .product-nav ul {
-    display: flex;
-    list-style: none;
-    gap: 1.5rem;
-    margin: 0;
-    padding: 0;
+nav ul,
+.product-nav ul {
+  display: flex;
+  list-style: none;
+  gap: 1.5rem;
+  margin: 0;
+  padding: 0;
 }
 
-nav ul li a, .product-nav ul li a {
-    text-decoration: none;
-    color: white;
-    font-weight: 500;
-    transition: color 0.3s ease;
-    padding: 8px 16px;
-    border-radius: 4px;
+nav ul li a,
+.product-nav ul li a {
+  text-decoration: none;
+  color: white;
+  font-weight: 500;
+  transition: color 0.3s ease;
+  padding: 8px 16px;
+  border-radius: 4px;
 }
 
-nav ul li a:hover, .product-nav ul li a:hover {
-    color: #ff7f50;
+nav ul li a:hover,
+.product-nav ul li a:hover {
+  color: #ff7f50;
 }
 
 .product-nav {
-    display: grid;
-    grid-template-columns: 200px 1fr 200px;
+  display: grid;
+  grid-template-columns: 200px 1fr 200px;
 }
 
 .product-nav ul {
-    justify-content: center;
-    margin: 0 auto;
+  justify-content: center;
+  margin: 0 auto;
 }
 
 .toggle-buttons {
-    display: flex;
-    gap: 1rem;
-    margin-bottom: 2rem;
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
 }
 
 .toggle-buttons .btn {
-    flex: 1;
-    padding: 0.8rem;
-    transition: all 0.3s ease;
+  flex: 1;
+  padding: 0.8rem;
+  transition: all 0.3s ease;
 }
 
 .toggle-buttons .btn-primary {
-    background: #f1501a;
-    color: white;
+  background: #f1501a;
+  color: white;
 }
 
 .toggle-buttons .btn-outline-secondary {
-    background: transparent;
-    border: 1px solid #f1501a;
-    color: #f1501a;
+  background: transparent;
+  border: 1px solid #f1501a;
+  color: #f1501a;
 }
 
 .toggle-buttons .btn-outline-secondary:hover {
-    background: rgba(241, 80, 26, 0.1);
+  background: rgba(241, 80, 26, 0.1);
 }
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.invoice-modal {
+  background: linear-gradient(to right, #151515, #3a3636);
+  border-radius: 8px;
+  padding: 24px;
+  width: 90%;
+  max-width: 600px;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+}
+
+.invoice-header {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  color: white;
+}
+
+.invoice-content {
+  margin-bottom: 24px;
+}
+
+.invoice-detail {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 12px;
+    padding: 12px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  .label {
+    font-weight: 600;
+    color: #f1501a;
+  }
+
+.value {
+  color: white;
+}
+
+.invoice-actions {
+    display: flex;
+    gap: 12px;
+    justify-content: flex-end;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 20px;
+    align-items: center;
+  }
+  
+  .invoice-actions button {
+    height: 45px;
+    line-height: 45px;
+    margin: 0;
+    padding: 0 24px;
+    background: #f1501a;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 600;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+  }
+  
+  
+  
+  .invoice-actions button:hover {
+    background: #ff6b3d;
+    transform: translateY(-2px);
+  }
+
+  .modal-close-btn {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    background: none;
+    border: none;
+    color: #f1501a;
+    font-size: 24px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .modal-close-btn:hover {
+    color: #ff6b3d;
+    transform: scale(1.2);
+  }
+  

@@ -10,6 +10,7 @@ module.exports = function override(config) {
         "https": require.resolve("https-browserify"),
         "os": require.resolve("os-browserify"),
         "url": require.resolve("url"),
+        "process": false,
         "net": false,
         "fs": false,
         "querystring": false,
@@ -26,7 +27,8 @@ module.exports = function override(config) {
     ]);
     config.resolve.alias = {
         ...config.resolve.alias,
-        'fs': false
+        'fs': false,
+        // 'process': require.resolve('process/browser')
     };
     return config;
 }

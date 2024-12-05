@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Web3 from "web3";
 import { ContractKit, newKitFromWeb3 } from "@celo/contractkit";
+import jsPDF from "jspdf";
 // import { newKitFromWeb3 } from '@celo/contractkit';
 
 declare global {
@@ -68,6 +69,7 @@ const InvoiceGenerator = () => {
       walletAddress: account,
     };
 
+    // setInvoiceOutput(invoicePayload);
     try {
       const response = await fetch("http://127.0.0.1:5000/api/save-invoice", {
         method: "POST",
@@ -89,17 +91,127 @@ const InvoiceGenerator = () => {
   };
 
   const downloadPDF = () => {
-    // Implement PDF generation using jsPDF
+    try {
+      const doc = new jsPDF();
+
+      // Set document properties
+      doc.setProperties({
+        title: `Invoice ${invoiceData.invoiceNumber}`,
+        author: "Paynder Ltd",
+        subject: "Invoice",
+      });
+
+      // Company Logo and Header
+      doc.setFontSize(28);
+      doc.setTextColor(241, 80, 26); // Orange brand color
+      doc.text("PAYNDER", 20, 20);
+
+      // Invoice Title
+      doc.setFontSize(22);
+      doc.setTextColor(33, 33, 33);
+      doc.text("INVOICE", 20, 40);
+
+      // Invoice Details Section
+      doc.setFontSize(12);
+      doc.setTextColor(51, 51, 51);
+
+      // Left column
+      doc.text(`Invoice Number: ${invoiceData.invoiceNumber}`, 20, 60);
+      doc.text(`Date: ${invoiceData.date}`, 20, 70);
+      doc.text(`Due Date: ${invoiceData.dueDate}`, 20, 80);
+
+      // Right column
+      doc.text(`Network: ${invoiceData.network}`, 120, 60);
+      doc.text(`Stablecoin: ${invoiceData.stablecoin}`, 120, 70);
+
+      // Description Box
+      doc.setDrawColor(241, 80, 26);
+      doc.setLineWidth(0.1);
+      doc.rect(20, 90, 170, 30);
+      doc.text("Description:", 25, 100);
+      doc.setFontSize(11);
+      doc.text(invoiceData.description, 25, 110);
+
+      // Amount Section
+      doc.setFontSize(14);
+      doc.setFont("helvetica", "bold");
+      doc.text(
+        `Amount Due: ${invoiceData.amount} ${invoiceData.stablecoin}`,
+        120,
+        140
+      );
+
+      // Payment Details
+      doc.setFontSize(12);
+      doc.setFont("helvetica", "normal");
+      doc.text("Payment Details", 20, 160);
+      doc.setFontSize(10);
+      doc.text(`Wallet Address: ${account}`, 20, 170);
+
+      // Footer
+      doc.setFontSize(10);
+      doc.setTextColor(128, 128, 128);
+      doc.text("Paynder Ltd.", 20, 270);
+      doc.text("Email: info@paynder.com | Website: www.paynder.com", 20, 280);
+
+      // Save the PDF
+      doc.save(`invoice_${invoiceData.invoiceNumber}.pdf`);
+    } catch (error) {
+      console.error("Error generating PDF:", error);
+    }
   };
 
   const shareWhatsApp = () => {
-    const message = `Invoice Details:\n\nInvoice Number: ${invoiceData.invoiceNumber}\nDate: ${invoiceData.date}\nDue Date: ${invoiceData.dueDate}\nDescription: ${invoiceData.description}\nStablecoin: ${invoiceData.stablecoin}\nNetwork: ${invoiceData.network}\nAmount Due: ${invoiceData.amount}\nWallet Address for Payment: ${account}`;
+    const message = `🧾 *Invoice from Paynder*
+  ───────────────
+  *Invoice Number:* ${invoiceData.invoiceNumber}
+  *Date:* ${invoiceData.date}
+  *Due Date:* ${invoiceData.dueDate}
+  
+  *Description:*
+  ${invoiceData.description}
+  
+  *Payment Details:*
+  Amount: ${invoiceData.amount} ${invoiceData.stablecoin}
+  Network: ${invoiceData.network}
+  Wallet Address: ${account}
+  
+  Pay securely via Paynder 🔒
+  www.paynder.com`;
+
     window.open(`https://wa.me/?text=${encodeURIComponent(message)}`, "_blank");
   };
 
   const shareEmail = () => {
-    const subject = "Invoice Details";
-    const body = `Invoice Details:\n\nInvoice Number: ${invoiceData.invoiceNumber}\nDate: ${invoiceData.date}\nDue Date: ${invoiceData.dueDate}\nDescription: ${invoiceData.description}\nStablecoin: ${invoiceData.stablecoin}\nNetwork: ${invoiceData.network}\nAmount Due: ${invoiceData.amount}\nWallet Address for Payment: ${account}`;
+    const subject = `Invoice ${invoiceData.invoiceNumber} from Paynder`;
+
+    const body = `Dear valued customer,
+  
+  Please find your invoice details below:
+  
+  INVOICE DETAILS
+  ──────────────
+  Invoice Number: ${invoiceData.invoiceNumber}
+  Date: ${invoiceData.date}
+  Due Date: ${invoiceData.dueDate}
+  
+  Description:
+  ${invoiceData.description}
+  
+  PAYMENT INFORMATION
+  ──────────────────
+  Amount Due: ${invoiceData.amount} ${invoiceData.stablecoin}
+  Network: ${invoiceData.network}
+  Wallet Address: ${account}
+  
+  You can complete your payment securely through Paynder.
+  
+  For any questions, please contact us at support@paynder.com
+  
+  Best regards,
+  Paynder Team
+  www.paynder.com`;
+
     window.open(
       `mailto:?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(
         body
@@ -119,7 +231,8 @@ const InvoiceGenerator = () => {
               type="text"
               className="form-control"
               id="invoiceNumber"
-              value={invoiceData.invoiceNumber}
+              // value={invoiceData.invoiceNumber}
+              value="INV-2024-001"
               readOnly
             />
           </div>
@@ -220,18 +333,59 @@ const InvoiceGenerator = () => {
       </div>
 
       {invoiceOutput && (
-        <div className="invoice-output">
-          <h3>Invoice Created</h3>
-          <p>Invoice Number: {invoiceOutput.invoiceNumber}</p>
-          <p>Date: {invoiceOutput.date}</p>
-          <p>Due Date: {invoiceOutput.dueDate}</p>
-          <p>Description: {invoiceOutput.description}</p>
-          <p>Stablecoin: {invoiceOutput.stablecoin}</p>
-          <p>Network: {invoiceOutput.network}</p>
-          <p>Amount Due: {invoiceOutput.amount}</p>
-          <button onClick={downloadPDF}>Download PDF</button>
-          <button onClick={shareWhatsApp}>Share via WhatsApp</button>
-          <button onClick={shareEmail}>Share via Email</button>
+        <div className="modal-overlay">
+          <div className="invoice-modal">
+            <button
+              className="modal-close-btn"
+              onClick={() => setInvoiceOutput(null)}
+            >
+              ×
+            </button>
+            <div className="invoice-header">
+              <h3>Invoice Created Successfully</h3>
+            </div>
+            <div className="invoice-content">
+              <div className="invoice-detail">
+                <span className="label">Invoice Number:</span>
+                <span className="value">{invoiceOutput.invoiceNumber}</span>
+              </div>
+              <div className="invoice-detail">
+                <span className="label">Date:</span>
+                <span className="value">{invoiceOutput.date}</span>
+              </div>
+              <div className="invoice-detail">
+                <span className="label">Due Date:</span>
+                <span className="value">{invoiceOutput.dueDate}</span>
+              </div>
+              <div className="invoice-detail">
+                <span className="label">Description:</span>
+                <span className="value">{invoiceOutput.description}</span>
+              </div>
+              <div className="invoice-detail">
+                <span className="label">Stablecoin:</span>
+                <span className="value">{invoiceOutput.stablecoin}</span>
+              </div>
+              <div className="invoice-detail">
+                <span className="label">Network:</span>
+                <span className="value">{invoiceOutput.network}</span>
+              </div>
+              <div className="invoice-detail">
+                <span className="label">Amount Due:</span>
+                <span className="value">{invoiceOutput.amount}</span>
+              </div>
+            </div>
+            <div className="invoice-actions">
+              <button className="btn btn-primary" onClick={downloadPDF}>
+                Download PDF
+              </button>
+              <button className="btn btn-success" onClick={shareWhatsApp}>
+                Share via WhatsApp
+              </button>
+              <button className="btn btn-info" onClick={shareEmail}>
+                Share via Email
+              </button>
+            </div>
+          </div>
         </div>
       )}
     </div>
@@ -239,5 +393,3 @@ const InvoiceGenerator = () => {
 };
 
 export default InvoiceGenerator;
-
-
