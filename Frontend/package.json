@@ -2,23 +2,32 @@
   "name": "paynder",
   "version": "1.0.0",
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "start": "react-app-rewired start",
+    "build": "react-app-rewired build",
+    "test": "react-app-rewired test"
   },
   "dependencies": {
+    "@celo/contractkit": "^1.5.2",
+    "@types/react": "^18.0.0",
+    "@types/react-dom": "^18.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.0.0",
-    "@celo/contractkit": "^3.1.0",
-    "web3": "^1.8.0",
     "typescript": "^4.9.0",
-    "@types/react": "^18.0.0",
-    "@types/react-dom": "^18.0.0"
+    "web3": "^1.3.6"
   },
   "devDependencies": {
-    "react-scripts": "5.0.1"
+    "assert": "^2.1.0",
+    "buffer": "^6.0.3",
+    "crypto-browserify": "^3.12.1",
+    "https-browserify": "^1.0.0",
+    "os-browserify": "^0.3.0",
+    "process": "^0.11.10",
+    "react-app-rewired": "^2.2.1",
+    "react-scripts": "5.0.1",
+    "stream-browserify": "^3.0.0",
+    "stream-http": "^3.2.0",
+    "url": "^0.11.4"
   },
   "browserslist": {
     "production": [
