@@ -28,7 +28,7 @@ const InvoiceGenerator = () => {
 
   useEffect(() => {
     checkWalletConnection();
-    fetchNextInvoiceNumber();
+    // fetchNextInvoiceNumber();
   }, []);
 
   const checkWalletConnection = () => {
@@ -39,22 +39,22 @@ const InvoiceGenerator = () => {
     }
   };
 
-  const fetchNextInvoiceNumber = async () => {
-    try {
-      const response = await fetch(
-        "http://127.0.0.1:5000/api/get-next-invoice-number"
-      );
-      if (response.ok) {
-        const data = await response.json();
-        setInvoiceData((prev) => ({
-          ...prev,
-          invoiceNumber: data.invoiceNumber,
-        }));
-      }
-    } catch (error) {
-      console.error("Error fetching invoice number:", error);
-    }
-  };
+  // const fetchNextInvoiceNumber = async () => {
+  //   try {
+  //     const response = await fetch(
+  //       "http://127.0.0.1:5000/api/get-next-invoice-number"
+  //     );
+  //     if (response.ok) {
+  //       const data = await response.json();
+  //       setInvoiceData((prev) => ({
+  //         ...prev,
+  //         invoiceNumber: data.invoiceNumber,
+  //       }));
+  //     }
+  //   } catch (error) {
+  //     console.error("Error fetching invoice number:", error);
+  //   }
+  // };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -69,25 +69,25 @@ const InvoiceGenerator = () => {
       walletAddress: account,
     };
 
-    // setInvoiceOutput(invoicePayload);
-    try {
-      const response = await fetch("http://127.0.0.1:5000/api/save-invoice", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(invoicePayload),
-      });
+    setInvoiceOutput(invoicePayload);
+    // try {
+    //   const response = await fetch("http://127.0.0.1:5000/api/save-invoice", {
+    //     method: "POST",
+    //     headers: {
+    //       "Content-Type": "application/json",
+    //     },
+    //     body: JSON.stringify(invoicePayload),
+    //   });
 
-      if (response.ok) {
-        setInvoiceOutput(invoicePayload);
-      } else {
-        alert("Error saving invoice. Please try again.");
-      }
-    } catch (error) {
-      console.error("Error saving invoice:", error);
-      alert("Error saving invoice. Please try again.");
-    }
+    //   if (response.ok) {
+    //     setInvoiceOutput(invoicePayload);
+    //   } else {
+    //     alert("Error saving invoice. Please try again.");
+    //   }
+    // } catch (error) {
+    //   console.error("Error saving invoice:", error);
+    //   alert("Error saving invoice. Please try again.");
+    // }
   };
 
   const downloadPDF = () => {

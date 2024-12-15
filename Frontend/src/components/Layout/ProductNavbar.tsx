@@ -1,63 +1,68 @@
 import { newKitFromWeb3 } from "@celo/contractkit";
-import React from "react";
-import { Link, useLocation } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import Web3 from "web3";
 
 const ProductNavbar = () => {
-  const connectWallet = async () => {
-    if (typeof window.ethereum !== "undefined") {
-      try {
-        await window.ethereum.request({
-          method: "eth_requestAccounts",
-        });
+  const [eth, setEth] = useState<any>();
 
-        await switchToCeloNetwork();
+  useEffect(() => {
+    if (window.ethereum) {
+      setEth(window.ethereum);
+    }
+  }, []);
 
-        const accounts = await window.ethereum.request({
-          method: "eth_accounts",
-        });
+  const connectWallet = async (eth: any) => {
+    try {
+      await eth.request({
+        method: "eth_requestAccounts",
+      });
 
-        const currentAccount = accounts[0];
-        const provider = window.ethereum;
-        const web3Instance = new Web3(provider);
-        const kitInstance = newKitFromWeb3(web3Instance);
+      await switchToCeloNetwork();
 
-        kitInstance.defaultAccount = currentAccount;
+      const accounts = await eth.request({
+        method: "eth_accounts",
+      });
 
-        localStorage.setItem("walletConnected", "true");
-        localStorage.setItem("account", currentAccount);
+      const currentAccount = accounts[0];
+      const web3Instance = new Web3('https://alfajores-forno.celo-testnet.org');
+      const kitInstance = newKitFromWeb3(web3Instance);
 
-        console.log({
-          currentAccount,
-          web3Instance,
-          kitInstance,
-        })
-      } catch (error) {
-        console.log("Detailed connection error:", error);
-      }
-    } else {
-      alert("Please install MetaMask or another Web3 wallet provider.");
+      kitInstance.defaultAccount = currentAccount;
+
+      localStorage.setItem("walletConnected", "true");
+      localStorage.setItem("account", currentAccount);
+
+      console.log({
+        currentAccount,
+        web3Instance,
+        kitInstance,
+      });
+    } catch (error) {
+      console.log("Detailed connection error:", error);
     }
   };
 
   const switchToCeloNetwork = async () => {
     try {
       await window.ethereum.request({
-        method: 'wallet_addEthereumChain',
-        params: [{
-          chainId: '0xa4ec',
-          chainName: 'Celo Mainnet',
-          nativeCurrency: {
-            name: 'CELO',
-            symbol: 'CELO',
-            decimals: 18
+        method: "wallet_addEthereumChain",
+        params: [
+          {
+            chainId: "0xa4ec",
+            chainName: "Celo Mainnet",
+            nativeCurrency: {
+              name: "CELO",
+              symbol: "CELO",
+              decimals: 18,
+            },
+            rpcUrls: ["https://forno.celo.org"],
+            blockExplorerUrls: ["https://explorer.celo.org"],
           },
-          rpcUrls: ['https://forno.celo.org'],
-          blockExplorerUrls: ['https://explorer.celo.org']
-        }]
+        ],
       });
     } catch (error) {
-      console.error('Error switching to Celo network:', error);
+      console.error("Error switching to Celo network:", error);
     }
   };
 
@@ -81,14 +86,16 @@ const ProductNavbar = () => {
         </li>
         {/* <li><Link to="/dashboard">Dashboard</Link></li> */}
       </ul>
-      <button
-        type="button"
-        className="btn btn-primary"
-        id="connectWalletButton"
-        onClick={() => connectWallet()}
-      >
-        Connect Wallet
-      </button>
+      {eth && (
+        <button
+          type="button"
+          className="btn btn-primary"
+          id="connectWalletButton"
+          onClick={() => connectWallet(eth)}
+        >
+          Connect Wallet
+        </button>
+      )}
     </nav>
   );
 };

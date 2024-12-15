@@ -23,6 +23,7 @@
     "web3": "^4.16.0"
   },
   "devDependencies": {
+    "@esbuild-plugins/node-globals-polyfill": "^0.2.3",
     "@vitejs/plugin-react": "^4.3.4",
     "assert": "^2.1.0",
     "buffer": "^6.0.3",
