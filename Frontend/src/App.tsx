@@ -1,4 +1,3 @@
-import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Layout/Navbar';
 import ProductNavbar from './components/Layout/ProductNavbar';
@@ -6,13 +5,13 @@ import Hero from './components/Home/Hero';
 import Products from './components/Home/Products';
 import About from './components/Home/About';
 import InvoiceGenerator from './components/createinvoice';
-import Contact from 'components/Home/Contact';
-import Bubbles from 'components/Bubbles';
-import SendPayments from 'components/Send';
+import Contact from './components/Home/Contact';
+import Bubbles from './components/Bubbles';
+import SendPayments from './components/Send';
 import PaymentLinks from './components/Links';
 import OnRampOffRamp from './components/OnRampOffRamp';
 // import Dashboard from './components/Dashboard';
-import Footer from 'components/Footer';
+import Footer from './components/Footer';
 
 const App = () => {
   return (
