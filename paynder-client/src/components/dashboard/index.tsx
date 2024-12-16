@@ -8,14 +8,13 @@ import {
   ArrowDownRight,
   FileText,
   Coins,
-  Users,
   Building,
   CreditCard,
   Link,
   Copy,
 } from "lucide-react";
 import { MetaMaskInpageProvider } from "@metamask/providers";
-import { newKit } from "@celo/contractkit";
+// import { newKit } from "@celo/contractkit";
 
 export default function DashboardPage() {
   const [balance, _setBalance] = useState(10000.0);
