@@ -1,0 +1,107 @@
+.contact {
+    min-height: 60vh;
+    padding: 4rem 2rem;
+    background: transparent;
+    text-align: center;
+    position: relative;
+  }
+  
+  .contact h2 {
+    color: white;
+    font-size: 2.8rem;
+    margin-bottom: 3rem;
+    letter-spacing: -0.5px;
+  }
+  
+  .contact form {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 2.5rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 16px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.2);
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  
+  .contact input,
+  .contact textarea {
+    width: 90%;
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0, 2);
+    background: rgba(255, 255, 255, 0.08);
+    color: white;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+  }
+  
+  .contact input:focus,
+  .contact textarea:focus {
+    outline: none;
+    border-color: #f1501a;
+    background: rgba(255, 255, 255, 0.12);
+  }
+  
+  .contact textarea {
+    min-height: 150px;
+    resize: vertical;
+  }
+  
+  .contact button {
+    background: #f1501a;
+    color: white;
+    padding: 1rem 2.5rem;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .contact button:hover {
+    transform: translateY(-2px);
+    background-color: #ff6b3d;
+    box-shadow: 0 5px 15px rgba(241, 80, 26, 0.3);
+  }
+  
+  .contact .contact-info {
+    margin-top: 3rem;
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+  }
+  
+  .contact p {
+    color: white;
+    margin-top: 2rem;
+    font-size: 1.1rem;
+    opacity: 0.9;
+  }
+  
+  .contactLinks {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+  
+  .contactItem {
+    color: white;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+  }
+  
+  .contactItem:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
+  }

@@ -1,5 +1,6 @@
-import React, { useState } from "react";
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useState } from "react";
+import styles from "./contact.module.css";
+import { Mail, Phone } from "lucide-react";
 
 const Contact: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -14,7 +15,7 @@ const Contact: React.FC = () => {
   };
 
   return (
-    <section id="contact" className="contact">
+    <section id="contact" className={styles.contact}>
       <h2>Contact Us</h2>
       <form onSubmit={handleSubmit}>
         <input
@@ -41,13 +42,13 @@ const Contact: React.FC = () => {
         />
         <button type="submit">Submit</button>
       </form>
-      <div className="contact-links">
-        <a href="mailto:info@paynder.com" className="contact-item">
-          <i className="fa fa-envelope-o" aria-hidden="true"></i>
+      <div className={styles.contactLinks}>
+        <a href="mailto:info@paynder.com" className={styles.contactItem}>
+          <Mail />
           info@paynder.com
         </a>
-        <a href="tel:+254795414186" className="contact-item">
-          <i className="fa fa-phone" aria-hidden="true"></i>
+        <a href="tel:+254795414186" className={styles.contactItem}>
+          <Phone />
           +254 795 414 186
         </a>
       </div>

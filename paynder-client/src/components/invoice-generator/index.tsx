@@ -361,32 +361,48 @@ const InvoiceGenerator = () => {
             </div>
             <div className={styles.invoiceContent}>
               <div className={styles.invoiceDetail}>
-                <span className={styles.invoiceDetailLabel}>Invoice Number:</span>
-                <span className={styles.invoiceDetailValue}>{invoiceOutput.invoiceNumber}</span>
+                <span className={styles.invoiceDetailLabel}>
+                  Invoice Number:
+                </span>
+                <span className={styles.invoiceDetailValue}>
+                  {invoiceOutput.invoiceNumber}
+                </span>
               </div>
               <div className={styles.invoiceDetail}>
                 <span className={styles.invoiceDetailLabel}>Date:</span>
-                <span className={styles.invoiceDetailValue}>{invoiceOutput.date}</span>
+                <span className={styles.invoiceDetailValue}>
+                  {invoiceOutput.date}
+                </span>
               </div>
               <div className={styles.invoiceDetail}>
                 <span className={styles.invoiceDetailLabel}>Due Date:</span>
-                <span className={styles.invoiceDetailValue}>{invoiceOutput.dueDate}</span>
+                <span className={styles.invoiceDetailValue}>
+                  {invoiceOutput.dueDate}
+                </span>
               </div>
               <div className={styles.invoiceDetail}>
                 <span className={styles.invoiceDetailLabel}>Description:</span>
-                <span className={styles.invoiceDetailValue}>{invoiceOutput.description}</span>
+                <span className={styles.invoiceDetailValue}>
+                  {invoiceOutput.description}
+                </span>
               </div>
               <div className={styles.invoiceDetail}>
                 <span className={styles.invoiceDetailLabel}>Stablecoin:</span>
-                <span className={styles.invoiceDetailValue}>{invoiceOutput.stablecoin}</span>
+                <span className={styles.invoiceDetailValue}>
+                  {invoiceOutput.stablecoin}
+                </span>
               </div>
               <div className={styles.invoiceDetail}>
                 <span className={styles.invoiceDetailLabel}>Network:</span>
-                <span className={styles.invoiceDetailValue}>{invoiceOutput.network}</span>
+                <span className={styles.invoiceDetailValue}>
+                  {invoiceOutput.network}
+                </span>
               </div>
               <div className={styles.invoiceDetail}>
                 <span className={styles.invoiceDetailLabel}>Amount Due:</span>
-                <span className={styles.invoiceDetailValue}>{invoiceOutput.amount}</span>
+                <span className={styles.invoiceDetailValue}>
+                  {invoiceOutput.amount}
+                </span>
               </div>
             </div>
             <div className={styles.invoiceActions}>
