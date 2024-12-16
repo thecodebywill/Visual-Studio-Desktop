@@ -13,6 +13,7 @@ import { createFileRoute } from '@tanstack/react-router'
 // Import Routes
 
 import { Route as rootRoute } from './routes/__root'
+import { Route as DashboardImport } from './routes/dashboard'
 
 // Create Virtual Routes
 
@@ -34,6 +35,12 @@ const AboutLazyRoute = AboutLazyImport.update({
   getParentRoute: () => rootRoute,
 } as any).lazy(() => import('./routes/about.lazy').then((d) => d.Route))
 
+const DashboardRoute = DashboardImport.update({
+  id: '/dashboard',
+  path: '/dashboard',
+  getParentRoute: () => rootRoute,
+} as any)
+
 const IndexLazyRoute = IndexLazyImport.update({
   id: '/',
   path: '/',
@@ -49,6 +56,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexLazyImport
+      parentRoute: typeof rootRoute
+    }
+    '/dashboard': {
+      id: '/dashboard'
+      path: '/dashboard'
+      fullPath: '/dashboard'
+      preLoaderRoute: typeof DashboardImport
       parentRoute: typeof rootRoute
     }
     '/about': {
@@ -72,12 +86,14 @@ declare module '@tanstack/react-router' {
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexLazyRoute
+  '/dashboard': typeof DashboardRoute
   '/about': typeof AboutLazyRoute
   '/invoice': typeof InvoiceLazyRoute
 }
 
 export interface FileRoutesByTo {
   '/': typeof IndexLazyRoute
+  '/dashboard': typeof DashboardRoute
   '/about': typeof AboutLazyRoute
   '/invoice': typeof InvoiceLazyRoute
 }
@@ -85,27 +101,30 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRoute
   '/': typeof IndexLazyRoute
+  '/dashboard': typeof DashboardRoute
   '/about': typeof AboutLazyRoute
   '/invoice': typeof InvoiceLazyRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about' | '/invoice'
+  fullPaths: '/' | '/dashboard' | '/about' | '/invoice'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/invoice'
-  id: '__root__' | '/' | '/about' | '/invoice'
+  to: '/' | '/dashboard' | '/about' | '/invoice'
+  id: '__root__' | '/' | '/dashboard' | '/about' | '/invoice'
   fileRoutesById: FileRoutesById
 }
 
 export interface RootRouteChildren {
   IndexLazyRoute: typeof IndexLazyRoute
+  DashboardRoute: typeof DashboardRoute
   AboutLazyRoute: typeof AboutLazyRoute
   InvoiceLazyRoute: typeof InvoiceLazyRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexLazyRoute: IndexLazyRoute,
+  DashboardRoute: DashboardRoute,
   AboutLazyRoute: AboutLazyRoute,
   InvoiceLazyRoute: InvoiceLazyRoute,
 }
@@ -121,12 +140,16 @@ export const routeTree = rootRoute
       "filePath": "__root.tsx",
       "children": [
         "/",
+        "/dashboard",
         "/about",
         "/invoice"
       ]
     },
     "/": {
       "filePath": "index.lazy.tsx"
+    },
+    "/dashboard": {
+      "filePath": "dashboard.tsx"
     },
     "/about": {
       "filePath": "about.lazy.tsx"

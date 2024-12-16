@@ -26,7 +26,7 @@ const Navbar = () => {
         <NavLink href="/#about" text="About" />
         <NavLink href="/#contact" text="Contact us" />
         <li>
-          <Link to="/invoice">Launch Beta</Link>
+          <Link to="/dashboard">Launch Beta</Link>
         </li>
       </ul>
     </nav>
