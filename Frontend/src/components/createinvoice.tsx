@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import Web3 from "web3";
-import { ContractKit, newKitFromWeb3 } from "@celo/contractkit";
+// import Web3 from "web3";
+// import { ContractKit, newKitFromWeb3 } from "@celo/contractkit";
 import jsPDF from "jspdf";
 // import { newKitFromWeb3 } from '@celo/contractkit';
 
@@ -11,10 +11,10 @@ declare global {
 }
 
 const InvoiceGenerator = () => {
-  const [web3, setWeb3] = useState<Web3 | null>(null);
+  // const [web3, setWeb3] = useState<Web3 | null>(null);
   const [account, setAccount] = useState<string | null>(null);
   const [invoiceOutput, setInvoiceOutput] = useState<any>(null);
-  const [kit, setKit] = useState<ContractKit | null>(null);
+  // const [kit, setKit] = useState<ContractKit | null>(null);
 
   const [invoiceData, setInvoiceData] = useState({
     invoiceNumber: "",

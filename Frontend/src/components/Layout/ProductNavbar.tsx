@@ -26,6 +26,7 @@ const ProductNavbar = () => {
 
       const currentAccount = accounts[0];
       const web3Instance = new Web3('https://alfajores-forno.celo-testnet.org');
+      //@ts-ignore
       const kitInstance = newKitFromWeb3(web3Instance);
 
       kitInstance.defaultAccount = currentAccount;
