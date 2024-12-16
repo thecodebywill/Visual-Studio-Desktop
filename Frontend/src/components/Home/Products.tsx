@@ -1,4 +1,3 @@
-import React from 'react';
 import ProductItem from './ProductItem';
 import pesaImg from '../../assets/pesa.png';
 import globalImg from '../../assets/global.png';
