@@ -1,0 +1,338 @@
+
+
+/* Add these styles to your existing global.css */
+
+body {
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(to right, #151515, #3a3636);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  min-height: 100vh;
+  color: white;
+}
+
+.products,
+.contact {
+  background: transparent;
+}
+
+header {
+  position: sticky;
+  top: 0;
+  z-index: 1020;
+  background: white;
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+  gap: 1.5rem;
+  margin: 0;
+  padding: 0;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: white;
+  font-weight: 500;
+  transition: color 0.3s ease;
+  padding: 8px 16px;
+  border-radius: 4px;
+}
+
+nav ul li a:hover {
+  color: #ff7f50;
+  padding: 8px 16px;
+  border-radius: 4px;
+}
+
+.feature-item {
+  text-align: center;
+  padding: 1.5rem;
+  border-radius: 8px;
+  background: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.about {
+  min-height: 60vh;
+  padding: 4rem 2rem;
+  background: transparent;
+  max-width: 1100px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.about h2 {
+  color: white;
+  font-size: 2.8rem;
+  margin-bottom: 2rem;
+  letter-spacing: -0.5px;
+  text-align: center;
+}
+
+.about h3 {
+  text-align: center;
+  color: #f1501a;
+  font-size: 1.8rem;
+  margin: 2rem 0 1rem;
+  padding: 0 1rem;
+}
+
+.about p {
+  color: white;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 2res;
+  max-width: 800px;
+  margin: 1.5rem auto;
+  text-align: left;
+  padding: 0 1rem;
+}
+
+.about ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 2rem auto;
+  max-width: 800px;
+  text-align: left;
+}
+
+.about ul li {
+  margin: 1rem 0;
+  padding-left: 2rem;
+  position: relative;
+  color: white;
+  font-size: 1.1rem;
+  line-height: 1.8;
+}
+
+.about ul li:before {
+  content: "•";
+  position: absolute;
+  left: 0.5rem;
+  color: #f1501a;
+  font-size: 1.2rem;
+}
+
+footer p {
+  color: white;
+  font-size: 1rem;
+  opacity: 0.8;
+}
+
+.animated-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+.feature-item {
+  text-align: center;
+  padding: 1.8rem;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.feature-item:hover {
+  transform: translateY(-5px);
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 6px 12px rgba(241, 80, 26, 0.15);
+}
+
+.feature-item img {
+  width: 65px;
+  height: 65px;
+  margin-bottom: 1.2rem;
+}
+
+.feature-item h3 {
+  color: #f1501a;
+  font-size: 1.3rem;
+  margin: 0.8rem 0;
+}
+
+.feature-item p {
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.5;
+  font-size: 1rem;
+}
+
+
+/* Product Interface Styling */
+
+.form-control {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  border-radius: 8px;
+  padding: 1rem;
+  width: 100%;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 2;
+}
+
+.btn-primary {
+  width: 100%;
+  background: #f1501a;
+  border: none;
+  padding: 1rem;
+  color: white;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 1rem;
+}
+
+.btn-primary:hover {
+  background: #ff6b3d;
+  transform: translateY(-2px);
+  box-shadow: 0 5px rgba(241, 80, 26, 0.3);
+}
+
+/* Product Navbar Styling */
+
+#connectWalletButton {
+  background: #f1501a;
+  color: white;
+  border: none;
+  padding: 0.3rem 0.6rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.8rem;
+  width: auto;
+  min-width: min-content;
+  height: 30px;
+  margin-left: auto;
+  flex-shrink: 0;
+  justify-self: end;
+}
+
+#connectWalletButton:hover {
+  background: #ff6b3d;
+  transform: translateY(-2px);
+}
+
+.bubbles {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.bubble {
+  position: absolute;
+  bottom: -100px;
+  width: 40px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  opacity: 0.5;
+  animation: rise 10s infinite ease-in;
+}
+
+@keyframes rise {
+  0% {
+    bottom: -100px;
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(100px);
+  }
+  100% {
+    bottom: 100vh;
+    transform: translateX(-200px);
+  }
+}
+
+nav,
+.product-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 10rem;
+  background-color: #171616;
+  height: 50px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+nav ul,
+.product-nav ul {
+  display: flex;
+  list-style: none;
+  gap: 1.5rem;
+  margin: 0;
+  padding: 0;
+}
+
+nav ul li a,
+.product-nav ul li a {
+  text-decoration: none;
+  color: white;
+  font-weight: 500;
+  transition: color 0.3s ease;
+  padding: 8px 16px;
+  border-radius: 4px;
+}
+
+nav ul li a:hover,
+.product-nav ul li a:hover {
+  color: #ff7f50;
+}
+
+.product-nav {
+  display: grid;
+  grid-template-columns: 200px 1fr 200px;
+}
+
+.product-nav ul {
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.toggle-buttons {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.toggle-buttons .btn {
+  flex: 1;
+  padding: 0.8rem;
+  transition: all 0.3s ease;
+}
+
+.toggle-buttons .btn-primary {
+  background: #f1501a;
+  color: white;
+}
+
+.toggle-buttons .btn-outline-secondary {
+  background: transparent;
+  border: 1px solid #f1501a;
+  color: #f1501a;
+}
+
+.toggle-buttons .btn-outline-secondary:hover {
+  background: rgba(241, 80, 26, 0.1);
+}

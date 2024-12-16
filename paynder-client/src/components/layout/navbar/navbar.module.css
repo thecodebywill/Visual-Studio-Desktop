@@ -1,0 +1,8 @@
+.logo {
+  color: #f1501a;
+  font-size: 1.5rem;
+  font-weight: bold;
+  flex-shrink: 0;
+  justify-self: start;
+  text-decoration: none;
+}
