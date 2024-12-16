@@ -1,0 +1,342 @@
+.dashboardContainer {
+  min-height: 100vh;
+  background: linear-gradient(to right, #151515, #3a3636);
+  padding: 2rem;
+}
+
+.dashboardContent {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 2rem;
+  border-bottom: 2px solid #f1501a;
+}
+
+.title {
+  font-size: 2.8rem;
+  color: white;
+  letter-spacing: -0.5px;
+  font-weight: bold;
+}
+
+.headerActions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  color: white;
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #4a4a4a;
+}
+
+.gridContainer {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+@media (min-width: 768px) {
+  .gridContainer {
+    grid-template-columns: 2fr 1fr;
+  }
+}
+
+.card {
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 100;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.cardHeader {
+  margin-bottom: 1rem;
+}
+
+.cardTitle {
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: #ffffff;
+}
+
+.balanceAmount {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #ffffff;
+  margin-bottom: 1rem;
+}
+
+.buttonContainer {
+  display: flex;
+  gap: 1rem;
+}
+
+.button {
+  flex: 1;
+  padding: 0.75rem 1rem;
+  border-radius: 0.25rem;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.primaryButton {
+  background-color: #f1501a;
+}
+
+.primaryButton:hover {
+  background-color: #ff6b3d;
+  transform: translateY(-2px);
+}
+
+.secondaryButton {
+  background-color: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  /* color: #141519; */
+}
+
+.secondaryButton:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.actionButton {
+  width: 100%;
+  padding: 0.75rem;
+  margin-bottom: 0.5rem;
+  background-color: #f1501a;
+  /* color: #ffffff; */
+  border: none;
+  border-radius: 0.25rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.actionButton:hover {
+  background-color: #ff6b3d;
+  transform: translateY(-2px);
+}
+
+.actionButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  color: #0f172a;
+}
+
+.tabs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.tab {
+  padding: 0.5rem;
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 0.25rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.tab.active {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.tabContent {
+  display: none;
+}
+
+.tabContent.active {
+  display: block;
+}
+
+.list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.listItem {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+  color: #ffffff;
+}
+
+.transactionItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.transactionIcon {
+  margin-right: 0.5rem;
+}
+
+.sent {
+  color: #ff4d4d;
+}
+
+.received {
+  color: #4dff4d;
+}
+
+.walletButton {
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 9999px;
+  padding: 0.5rem 1rem;
+  color: #ffffff;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  white-space: wrap;
+}
+
+.walletButton:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.walletDropdown {
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  z-index: 10;
+}
+
+.walletDropdownItem {
+  padding: 0.5rem;
+  color: #ffffff;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.walletDropdownItem:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.toast {
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  background-color: rgba(0, 0, 0, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0.5rem;
+  color: white;
+  padding: 1rem;
+  z-index: 100;
+}
+
+.toastSuccess {
+  border-left: 4px solid #10b981;
+}
+
+.toastError {
+  border-left: 4px solid #ef4444;
+}
+
+.dropdownContainer {
+  position: relative;
+}
+
+.actionDropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  backdrop-filter: blur(10px);
+  z-index: 10;
+  margin-top: 0.5rem;
+}
+
+.dropdownItem {
+  width: 100%;
+  padding: 0.75rem;
+  background: transparent;
+  border: none;
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.dropdownItem:hover {
+  background: rgba(241, 80, 26, 0.2);
+}
+
+.dropdownWrapper {
+  position: relative;
+  width: 100%;
+  z-index: 100;
+}
+
+.receiveDropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  right: 0;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  backdrop-filter: blur(10px);
+  z-index: 1000; /* Increased z-index to float above other elements */
+  overflow: hidden;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.2); /* Added shadow for depth */
+}
+
+.receiveOption {
+  width: 100%;
+  padding: 12px 16px;
+  background: transparent;
+  border: none;
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.receiveOption:hover {
+  background: #f1501a;
+}
+
+.actionButton.active {
+  background: #f1501a;
+}
