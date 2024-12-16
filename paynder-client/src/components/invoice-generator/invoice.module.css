@@ -1,0 +1,166 @@
+.productInterface {
+  background: linear-gradient(to right, #151515, #3a3636);
+  min-height: 100vh;
+  padding: 2rem;
+}
+
+.formContainer {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 2.5rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.2);
+  position: relative;
+  z-index: 1;
+}
+
+.formContainerHeading {
+  color: white;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.formGroup {
+  margin-bottom: 1.5rem;
+}
+
+.formGroupLabel {
+  color: white;
+  margin-bottom: 0.5rem;
+  display: block;
+  font-size: 1.1rem;
+}
+
+.formControl {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  border-radius: 8px;
+  padding: 1rem;
+  width: 100%;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 2;
+}
+
+.formControl:focus {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: #f1501a;
+  box-shadow: none;
+  color: white;
+  outline: none;
+}
+
+/* TODO: STYLE SELECT */
+.formControlSelect {
+  /* appearance: none; */
+}
+
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.invoiceModal {
+  background: linear-gradient(to right, #151515, #3a3636);
+  border-radius: 8px;
+  padding: 24px;
+  width: 90%;
+  max-width: 600px;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+}
+
+.modalCloseButton {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  background: none;
+  border: none;
+  color: #f1501a;
+  font-size: 24px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.modalCloseButton:hover {
+  color: #ff6b3d;
+  transform: scale(1.2);
+}
+
+.invoiceHeader {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  color: white;
+}
+
+.invoiceContent {
+  margin-bottom: 24px;
+}
+
+.invoiceDetail {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  padding: 12px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.invoiceDetailLabel {
+  font-weight: 600;
+  color: #f1501a;
+}
+
+.invoiceDetailValue {
+  color: white;
+}
+
+.invoiceActions {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 20px;
+  align-items: center;
+}
+
+.invoiceActions button {
+  height: 45px;
+  line-height: 45px;
+  margin: 0;
+  padding: 0 24px;
+  background: #f1501a;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 600;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+}
+
+.invoiceActions button:hover {
+  background: #ff6b3d;
+  transform: translateY(-2px);
+}

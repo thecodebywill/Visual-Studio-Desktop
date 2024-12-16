@@ -122,7 +122,9 @@
   border-radius: 4px;
   margin-top: 1rem;
   font-weight: bold;
-  transition: transform 0.2s ease, background-color 0.3s ease;
+  transition:
+    transform 0.2s ease,
+    background-color 0.3s ease;
 }
 
 .cta-button:hover {
@@ -296,15 +298,6 @@ footer p {
   z-index: -1;
 }
 
-.logo {
-  color: #f1501a;
-  font-size: 1.5rem;
-  font-weight: bold;
-  flex-shrink: 0;
-  justify-self: start;
-  text-decoration: none;
-}
-
 .products {
   min-height: 60vh;
   display: flex;
@@ -381,42 +374,6 @@ footer p {
   overflow: hidden;
 }
 /* Product Interface Styling */
-.product-interface {
-  background: linear-gradient(to right, #151515, #3a3636);
-  min-height: 100vh;
-  padding: 2rem;
-}
-
-.form-container {
-  max-width: 800px;
-  margin: 2rem auto;
-  padding: 2.5rem;
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 16px;
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.2);
-  position: relative;
-  z-index: 1;
-}
-
-.form-container h2 {
-  color: white;
-  font-size: 2rem;
-  margin-bottom: 2rem;
-  text-align: center;
-}
-
-.form-group {
-  margin-bottom: 1.5rem;
-}
-
-.form-group label {
-  color: white;
-  margin-bottom: 0.5rem;
-  display: block;
-  font-size: 1.1rem;
-}
 
 .form-control {
   background: rgba(255, 255, 255, 0.08);
@@ -429,22 +386,6 @@ footer p {
   transition: all 0.3s ease;
   position: relative;
   z-index: 2;
-}
-
-.form-control:focus {
-  background: rgba(255, 255, 255, 0.12);
-  border-color: #f1501a;
-  box-shadow: none;
-  color: white;
-  outline: none;
-}
-
-select.form-control {
-  appearance: none;
-  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3e%3cpath d='M7 10l5 5 5-5z'/%3e%3c/svg%3e");
-  background-repeat: no-repeat;
-  background-position: right 1rem center;
-  background-size: 1.5em;
 }
 
 .btn-primary {
@@ -602,106 +543,9 @@ nav ul li a:hover,
   background: rgba(241, 80, 26, 0.1);
 }
 
-.modal-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.7);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
-}
 
-.invoice-modal {
-  background: linear-gradient(to right, #151515, #3a3636);
-  border-radius: 8px;
-  padding: 24px;
-  width: 90%;
-  max-width: 600px;
-  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.2);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-}
 
-.invoice-header {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  margin-bottom: 20px;
-  padding-bottom: 10px;
-  color: white;
-}
 
-.invoice-content {
-  margin-bottom: 24px;
-}
 
-.invoice-detail {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 12px;
-  padding: 12px;
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 8px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-}
 
-.label {
-  font-weight: 600;
-  color: #f1501a;
-}
 
-.value {
-  color: white;
-}
-
-.invoice-actions {
-  display: flex;
-  gap: 12px;
-  justify-content: flex-end;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  padding-top: 20px;
-  align-items: center;
-}
-
-.invoice-actions button {
-  height: 45px;
-  line-height: 45px;
-  margin: 0;
-  padding: 0 24px;
-  background: #f1501a;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  font-weight: 600;
-  text-align: center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  white-space: nowrap;
-}
-
-.invoice-actions button:hover {
-  background: #ff6b3d;
-  transform: translateY(-2px);
-}
-
-.modal-close-btn {
-  position: absolute;
-  right: 20px;
-  top: 20px;
-  background: none;
-  border: none;
-  color: #f1501a;
-  font-size: 24px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.modal-close-btn:hover {
-  color: #ff6b3d;
-  transform: scale(1.2);
-}

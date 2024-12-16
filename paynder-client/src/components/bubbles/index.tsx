@@ -1,12 +1,17 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
+import styles from "./bubbles.module.css";
 
 const Bubbles = () => {
+  const bubblesRef = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
-    const bubblesContainer = document.querySelector(".bubbles");
+      if (!bubblesRef.current) return;
+      
+    const bubblesContainer = bubblesRef.current;
 
     const createBubble = () => {
       const bubble = document.createElement("div");
-      bubble.className = "bubble";
+      bubble.className = styles.bubble;
 
       // Random size
       const size = Math.random() * 60 + 20;
@@ -24,16 +29,15 @@ const Bubbles = () => {
       // Remove bubble after animation
       setTimeout(() => {
         bubble.remove();
-      }, 20000);
+      }, 10000);
     };
 
-    // Create bubbles periodically
-    const interval = setInterval(createBubble, Math.random() * 300);
+    const interval = setInterval(createBubble, Math.random() * 500);
 
     return () => clearInterval(interval);
   }, []);
 
-  return <div className="bubbles" />;
+  return <div ref={bubblesRef} className={styles.bubbles} />;
 };
 
 export default Bubbles;
