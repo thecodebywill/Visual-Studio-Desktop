@@ -4,6 +4,8 @@ import React, { useState, useEffect } from "react";
 import jsPDF from "jspdf";
 // import { newKitFromWeb3 } from '@celo/contractkit';
 import styles from "./invoice.module.css";
+import { ethers, Contract } from "ethers";
+import contractJson from "../../contracts/PaynderContract.json";
 
 declare global {
   interface Window {
@@ -11,7 +13,13 @@ declare global {
   }
 }
 
-const InvoiceGenerator = () => {
+interface InvoiceGeneratorProps {
+  onComplete: () => void;
+}
+
+type Stablecoin = "USDT" | "USDC" | "cUSD";
+
+const InvoiceGenerator = ({ onComplete }: InvoiceGeneratorProps) => {
   // const [web3, setWeb3] = useState<Web3 | null>(null);
   const [account, setAccount] = useState<string | null>(null);
   const [invoiceOutput, setInvoiceOutput] = useState<any>(null);
@@ -22,15 +30,18 @@ const InvoiceGenerator = () => {
     date: new Date().toISOString().split("T")[0],
     dueDate: "",
     description: "",
-    stablecoin: "USDT",
+    stablecoin: "USDT" as Stablecoin,
     network: "Celo",
     amount: "",
   });
 
   useEffect(() => {
     checkWalletConnection();
-    // fetchNextInvoiceNumber();
+    fetchNextInvoiceNumber();
   }, []);
+
+  const contractAddress = import.meta.env.VITE_CONTRACT_ADDRESS;
+  const contractABI = contractJson.abi;
 
   const checkWalletConnection = () => {
     const walletConnected = localStorage.getItem("walletConnected");
@@ -40,55 +51,75 @@ const InvoiceGenerator = () => {
     }
   };
 
-  // const fetchNextInvoiceNumber = async () => {
-  //   try {
-  //     const response = await fetch(
-  //       "http://127.0.0.1:5000/api/get-next-invoice-number"
-  //     );
-  //     if (response.ok) {
-  //       const data = await response.json();
-  //       setInvoiceData((prev) => ({
-  //         ...prev,
-  //         invoiceNumber: data.invoiceNumber,
-  //       }));
-  //     }
-  //   } catch (error) {
-  //     console.error("Error fetching invoice number:", error);
-  //   }
-  // };
+  const fetchNextInvoiceNumber = async () => {
+    try {
+      const provider = new ethers.BrowserProvider(window.ethereum);
+      const signer = await provider.getSigner();
+      const paynderContract = new Contract(
+        contractAddress,
+        contractABI,
+        await signer
+      );
+
+      // Get total invoices created for this user
+      const userInvoices = await paynderContract.getUserInvoiceCount();
+      const nextNumber = userInvoices.toNumber() + 1;
+
+      // Format: INV-YYYY-XXXX where XXXX is padded with zeros
+      const year = new Date().getFullYear();
+      const formattedNumber = `INV-${year}-${nextNumber.toString().padStart(4, "0")}`;
+
+      setInvoiceData((prev) => ({
+        ...prev,
+        invoiceNumber: formattedNumber,
+      }));
+    } catch (error) {
+      console.error("Error fetching invoice number:", error);
+    }
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    try {
+      const provider = new ethers.BrowserProvider(window.ethereum);
+      const signer = await provider.getSigner();
+      const paynderContract = new Contract(
+        contractAddress,
+        contractABI,
+        await signer
+      );
 
-    if (!account) {
-      alert("Please connect your wallet before generating an invoice.");
-      return;
+      // Convert amount to Wei
+      const amount = ethers.parseUnits(invoiceData.amount, 18);
+      // Convert due date to Unix timestamp
+      const dueDate = Math.floor(
+        new Date(invoiceData.dueDate).getTime() / 1000
+      );
+
+      const STABLECOIN_ADDRESSES = {
+        USDT: "0x617f3112bf5397D0467D315cC709EF968D9ba546", // Celo USDT address
+        USDC: "0x2A3684e9Dc20B857375EA04235F2F7edBe818FA7", // Celo USDC address
+        cUSD: "0x765DE816845861e75A25fCA122bb6898B8B1282a", // Celo cUSD address
+      };
+
+      const tx = await paynderContract.createInvoice(
+        invoiceData.invoiceNumber,
+        amount,
+        STABLECOIN_ADDRESSES[invoiceData.stablecoin],
+        dueDate,
+        invoiceData.description,
+        0, // WEB3_WALLET payment method
+        "" // Empty mpesa phone
+      );
+
+      console.log("Transaction submitted:", tx.hash);
+      await tx.wait();
+
+      setInvoiceOutput(invoiceData);
+      onComplete();
+    } catch (error) {
+      console.error("Error creating invoice:", error);
     }
-
-    const invoicePayload = {
-      ...invoiceData,
-      walletAddress: account,
-    };
-
-    setInvoiceOutput(invoicePayload);
-    // try {
-    //   const response = await fetch("http://127.0.0.1:5000/api/save-invoice", {
-    //     method: "POST",
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //     },
-    //     body: JSON.stringify(invoicePayload),
-    //   });
-
-    //   if (response.ok) {
-    //     setInvoiceOutput(invoicePayload);
-    //   } else {
-    //     alert("Error saving invoice. Please try again.");
-    //   }
-    // } catch (error) {
-    //   console.error("Error saving invoice:", error);
-    //   alert("Error saving invoice. Please try again.");
-    // }
   };
 
   const downloadPDF = () => {
@@ -297,7 +328,10 @@ const InvoiceGenerator = () => {
               id="stablecoin"
               value={invoiceData.stablecoin}
               onChange={(e) =>
-                setInvoiceData({ ...invoiceData, stablecoin: e.target.value })
+                setInvoiceData({
+                  ...invoiceData,
+                  stablecoin: e.target.value as Stablecoin,
+                })
               }
               required
             >

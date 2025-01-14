@@ -3,3 +3,4 @@
 # Ignore Python virtual environments (if using Python)
 venv/
 node_modules
+cache/

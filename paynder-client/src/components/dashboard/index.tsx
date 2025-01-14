@@ -15,6 +15,11 @@ import {
 } from "lucide-react";
 import { MetaMaskInpageProvider } from "@metamask/providers";
 // import { newKit } from "@celo/contractkit";
+import { ethers, Contract } from "ethers";
+// import dotenv from "dotenv";
+import contractJson from "../../contracts/PaynderContract.json";
+import { Modal } from "../shared/Modal";
+import InvoiceGenerator from "../invoice-generator";
 
 export default function DashboardPage() {
   const [balance, _setBalance] = useState(10000.0);
@@ -24,6 +29,7 @@ export default function DashboardPage() {
   const [toast, setToast] = useState({ show: false, message: "", type: "" });
   const [eth, setEth] = useState<MetaMaskInpageProvider>();
   const [showReceiveDropdown, setShowReceiveDropdown] = useState(false);
+  const [showInvoiceModal, setShowInvoiceModal] = useState(false);
 
   useEffect(() => {
     if (window.ethereum) {
@@ -33,8 +39,19 @@ export default function DashboardPage() {
     console.log(window.ethereum);
   }, []);
 
+  // Add contract state
+  const [contract, setContract] = useState<ethers.Contract>();
+  // Instead of process.env
+  const contractAddress = import.meta.env.CONTRACT_ADDRESS;
+
+  const contractABI = contractJson.abi;
+
+  // Modify your handleConnectWallet function
   const handleConnectWallet = useCallback(async () => {
-    if (!eth) return;
+    if (!eth) {
+      console.log("Missing eth address");
+      return;
+    }
 
     try {
       const result = await eth.request<`0x${string}`[]>({
@@ -49,33 +66,24 @@ export default function DashboardPage() {
       )
         throw new Error("Could not connect wallet.");
 
-      //     const kit = newKit("https://alfajores-forno.celo-testnet.org");
-      //   console.log({ kit });
-
-      //   kit.defaultAccount = result[0]!;
-
       setWalletId(result[0]);
+
+      // Initialize contract
+      if (contractAddress) {
+        const provider = new ethers.BrowserProvider(window.ethereum);
+        const signer = await provider.getSigner();
+        const paynderContract = new Contract(
+          contractAddress,
+          contractABI,
+          signer
+        );
+        setContract(paynderContract);
+        console.log(contract);
+      }
     } catch (error) {
       console.error("our error", error);
     }
   }, [eth]);
-
-  //   // Replace the existing connectWallet function with:
-  //   const handleWalletConnect = async (eth: any) => {
-  //     try {
-  //       const savedAccount = await connectWallet(eth);
-  //       if (savedAccount) {
-  //         setwalletId(true);
-  //         setWalletId(savedAccount || "");
-  //         showToast("Wallet Connected", "success");
-  //       } else {
-  //         throw new Error();
-  //       }
-  //     } catch (error) {
-  //       console.error("Failed to connect wallet:", error);
-  //       showToast("Failed to connect wallet. Please try again.", "error");
-  //     }
-  //   };
 
   const disconnectWallet = () => {
     setWalletId(null);
@@ -196,12 +204,18 @@ export default function DashboardPage() {
                   </button>
                   <button
                     className={styles.receiveOption}
-                    onClick={() => {
-                      /* handle invoice */
-                    }}
+                    onClick={() => setShowInvoiceModal(true)}
                   >
                     <FileText className={styles.icon} /> Generate Invoice
                   </button>
+                  <Modal
+                    isOpen={showInvoiceModal}
+                    onClose={() => setShowInvoiceModal(false)}
+                  >
+                    <InvoiceGenerator
+                      onComplete={() => setShowInvoiceModal(false)}
+                    />
+                  </Modal>
                 </div>
               )}
             </div>
