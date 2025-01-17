@@ -112,11 +112,20 @@ const InvoiceGenerator = ({
         "" // Empty mpesa phone
       );
 
-      console.log("Transaction submitted:", tx.hash);
+      // console.log("Transaction submitted:", tx.hash);
       await tx.wait();
-
       setInvoiceOutput(invoiceData);
-      onComplete();
+
+      const currentNumber = parseInt(invoiceData.invoiceNumber);
+      const year = new Date().getFullYear();
+      const nextNumber = `INV-${year}-${(currentNumber + 1).toString().padStart(4, "0")}`;
+
+      setInvoiceData((prev) => ({
+        ...prev,
+        invoiceNumber: nextNumber,
+      }));
+
+      // onComplete();
     } catch (error) {
       console.error("Error creating invoice:", error);
     }
@@ -191,6 +200,7 @@ const InvoiceGenerator = ({
     } catch (error) {
       console.error("Error generating PDF:", error);
     }
+    onComplete();
   };
 
   const shareWhatsApp = () => {
@@ -212,6 +222,7 @@ const InvoiceGenerator = ({
   www.paynder.com`;
 
     window.open(`https://wa.me/?text=${encodeURIComponent(message)}`, "_blank");
+    onComplete();
   };
 
   const shareEmail = () => {
@@ -250,6 +261,7 @@ const InvoiceGenerator = ({
       )}`,
       "_blank"
     );
+    onComplete();
   };
 
   return (
