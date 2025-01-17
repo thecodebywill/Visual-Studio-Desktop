@@ -30,6 +30,7 @@ export default function DashboardPage() {
   const [eth, setEth] = useState<MetaMaskInpageProvider>();
   const [showReceiveDropdown, setShowReceiveDropdown] = useState(false);
   const [showInvoiceModal, setShowInvoiceModal] = useState(false);
+  const [nextInvoiceNumber, setNextInvoiceNumber] = useState("");
 
   useEffect(() => {
     if (window.ethereum) {
@@ -42,7 +43,7 @@ export default function DashboardPage() {
   // Add contract state
   const [contract, setContract] = useState<ethers.Contract>();
   // Instead of process.env
-  const contractAddress = import.meta.env.CONTRACT_ADDRESS;
+  const contractAddress = import.meta.env.VITE_CONTRACT_ADDRESS;
 
   const contractABI = contractJson.abi;
 
@@ -78,7 +79,14 @@ export default function DashboardPage() {
           signer
         );
         setContract(paynderContract);
-        console.log(contract);
+
+        // Fetch invoice number
+        const userInvoices = await paynderContract.getUserInvoicecount();
+        const nextNumber = Number(userInvoices) + 1;
+        const year = new Date().getFullYear();
+        const formattedNumber = `INV-${year}-${nextNumber.toString().padStart(4, "0")}`;
+        setNextInvoiceNumber(formattedNumber);
+        console.log("InvoiceNumber:", formattedNumber);
       }
     } catch (error) {
       console.error("our error", error);
@@ -193,30 +201,33 @@ export default function DashboardPage() {
               </button>
 
               {showReceiveDropdown && (
-                <div className={styles.receiveDropdown}>
-                  <button
-                    className={styles.receiveOption}
+                <>
+                  <div
                     onClick={() => {
-                      /* handle payment link */
+                      setShowReceiveDropdown(false); // Close dropdown when clicking the backdrop
                     }}
-                  >
-                    <Link className={styles.icon} /> Generate Payment Link
-                  </button>
-                  <button
-                    className={styles.receiveOption}
-                    onClick={() => setShowInvoiceModal(true)}
-                  >
-                    <FileText className={styles.icon} /> Generate Invoice
-                  </button>
-                  <Modal
-                    isOpen={showInvoiceModal}
-                    onClose={() => setShowInvoiceModal(false)}
-                  >
-                    <InvoiceGenerator
-                      onComplete={() => setShowInvoiceModal(false)}
-                    />
-                  </Modal>
-                </div>
+                  />
+                  <div className={styles.receiveDropdown}>
+                    <button
+                      className={styles.receiveOption}
+                      onClick={() => {
+                        /* handle payment link */
+                        setShowReceiveDropdown(false);
+                      }}
+                    >
+                      <Link className={styles.icon} /> Generate Payment Link
+                    </button>
+                    <button
+                      className={styles.receiveOption}
+                      onClick={() => {
+                        setShowReceiveDropdown(false);
+                        setShowInvoiceModal(true);
+                      }}
+                    >
+                      <FileText className={styles.icon} /> Generate Invoice
+                    </button>
+                  </div>
+                </>
               )}
             </div>
           </div>
@@ -314,6 +325,19 @@ export default function DashboardPage() {
           {toast.message}
         </div>
       )}
+      <div className={styles.dashboardContainer}>
+        {showInvoiceModal && (
+          <Modal
+            isOpen={showInvoiceModal}
+            onClose={() => setShowInvoiceModal(false)}
+          >
+            <InvoiceGenerator
+              onComplete={() => setShowInvoiceModal(false)}
+              initialInvoiceNumber={nextInvoiceNumber}
+            />
+          </Modal>
+        )}
+      </div>
     </div>
   );
 }

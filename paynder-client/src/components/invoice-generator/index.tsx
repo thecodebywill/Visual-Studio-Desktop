@@ -15,11 +15,15 @@ declare global {
 
 interface InvoiceGeneratorProps {
   onComplete: () => void;
+  initialInvoiceNumber: String;
 }
 
 type Stablecoin = "USDT" | "USDC" | "cUSD";
 
-const InvoiceGenerator = ({ onComplete }: InvoiceGeneratorProps) => {
+const InvoiceGenerator = ({
+  onComplete,
+  initialInvoiceNumber,
+}: InvoiceGeneratorProps) => {
   // const [web3, setWeb3] = useState<Web3 | null>(null);
   const [account, setAccount] = useState<string | null>(null);
   const [invoiceOutput, setInvoiceOutput] = useState<any>(null);
@@ -35,10 +39,36 @@ const InvoiceGenerator = ({ onComplete }: InvoiceGeneratorProps) => {
     amount: "",
   });
 
+  const [contract, setContract] = useState<Contract | null>(null);
+
   useEffect(() => {
+    const intitializecontract = async () => {
+      const provider = new ethers.BrowserProvider(window.ethereum);
+      const signer = await provider.getSigner();
+      const paynderContract = new Contract(
+        contractAddress,
+        contractABI,
+        signer
+      );
+      // console.log("contract initialized:", paynderContract);
+      setContract(paynderContract);
+      // await fetchNextInvoiceNumber();
+    };
+
+    if (window.ethereum) {
+      // console.log("Ethereum object found");
+      intitializecontract();
+    }
+
     checkWalletConnection();
-    fetchNextInvoiceNumber();
   }, []);
+
+  useEffect(() => {
+    setInvoiceData((prev) => ({
+      ...prev,
+      invoiceNumber: initialInvoiceNumber as string,
+    }));
+  }, [initialInvoiceNumber]);
 
   const contractAddress = import.meta.env.VITE_CONTRACT_ADDRESS;
   const contractABI = contractJson.abi;
@@ -51,43 +81,13 @@ const InvoiceGenerator = ({ onComplete }: InvoiceGeneratorProps) => {
     }
   };
 
-  const fetchNextInvoiceNumber = async () => {
-    try {
-      const provider = new ethers.BrowserProvider(window.ethereum);
-      const signer = await provider.getSigner();
-      const paynderContract = new Contract(
-        contractAddress,
-        contractABI,
-        await signer
-      );
-
-      // Get total invoices created for this user
-      const userInvoices = await paynderContract.getUserInvoiceCount();
-      const nextNumber = userInvoices.toNumber() + 1;
-
-      // Format: INV-YYYY-XXXX where XXXX is padded with zeros
-      const year = new Date().getFullYear();
-      const formattedNumber = `INV-${year}-${nextNumber.toString().padStart(4, "0")}`;
-
-      setInvoiceData((prev) => ({
-        ...prev,
-        invoiceNumber: formattedNumber,
-      }));
-    } catch (error) {
-      console.error("Error fetching invoice number:", error);
-    }
-  };
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      const provider = new ethers.BrowserProvider(window.ethereum);
-      const signer = await provider.getSigner();
-      const paynderContract = new Contract(
-        contractAddress,
-        contractABI,
-        await signer
-      );
+      if (!contract) {
+        console.log("contract is not initialized");
+        return;
+      }
 
       // Convert amount to Wei
       const amount = ethers.parseUnits(invoiceData.amount, 18);
@@ -102,7 +102,7 @@ const InvoiceGenerator = ({ onComplete }: InvoiceGeneratorProps) => {
         cUSD: "0x765DE816845861e75A25fCA122bb6898B8B1282a", // Celo cUSD address
       };
 
-      const tx = await paynderContract.createInvoice(
+      const tx = await contract.createInvoice(
         invoiceData.invoiceNumber,
         amount,
         STABLECOIN_ADDRESSES[invoiceData.stablecoin],
@@ -265,8 +265,8 @@ const InvoiceGenerator = ({ onComplete }: InvoiceGeneratorProps) => {
               type="text"
               className={styles.formControl}
               id="invoiceNumber"
-              // value={invoiceData.invoiceNumber}
-              value="INV-2024-001"
+              value={invoiceData.invoiceNumber}
+              // value="INV-2024-001"
               readOnly
             />
           </div>
