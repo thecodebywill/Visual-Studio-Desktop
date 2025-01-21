@@ -59,15 +59,61 @@ Paynder is a modern Web3 payment platform built on the Celo blockchain, enabling
 Required environment variables:
 
 - `VITE_CONTRACT_ADDRESS`: Deployed PaynderContract address
+- `PRIVATE_KEY`: Your wallet private key (never share or commit this)
 - Additional configuration for Celo testnet/mainnet
 
 ## Development Workflow
 
-1. Connect to Celo network (Alfajores testnet for development)
-2. Initialize smart contract connection
-3. Handle wallet connections
-4. Manage invoice generation flow
-5. Process payments through the contract
+1. **Connecting to Celo Network**
+
+   First, create a `.env` file in your project root:
+
+   ```plaintext:.env
+   VITE_PRIVATE_KEY=your_wallet_private_key_here
+   VITE_CONTRACT_ADDRESS=your_deployed_contract_address
+   ```
+
+   Then set up the network connection using the private key:
+
+```Typescript
+import { ethers } from 'ethers';
+
+  const provider = new ethers.providers.JsonRpcProvider(
+   process.env.VITE_NETWORK === 'mainnet'
+   ? 'https://forno.celo.org'
+   : 'https://alfajores-forno.celo-testnet.org'
+);
+
+const wallet = new ethers.Wallet(
+ process.env.VITE_PRIVATE_KEY as string,
+ provider
+);
+```
+
+2. **Initialize Smart Contract Connection**
+
+- Import contract ABI
+- Create contract instance using the wallet
+- Validate network connection
+- Handle Wallet Connections
+
+3. **Connect using initialized wallet instance**
+
+- Implement wallet connection state management
+- Handle network changes
+- Manage Invoice Generation Flow
+
+For local development:
+
+```bash
+npm run dev
+```
+
+For contract deployment using your private key:
+
+```bash
+npx hardhat run scripts/deploy.ts --network alfajores
+```
 
 ## Future Considerations
 
